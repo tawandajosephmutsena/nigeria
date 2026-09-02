@@ -11,6 +11,7 @@ use App\Filament\Resources\HR\Employees\Schemas\EmployeeForm;
 use App\Filament\Resources\HR\Employees\Tables\EmployeesTable;
 use App\Filament\Resources\HR\Employees\Widgets\EmployeeStats;
 use App\Models\HR\Employee;
+use App\Services\ModuleRegistry;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -99,5 +100,10 @@ class EmployeeResource extends Resource
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
             ]);
+    }
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return ModuleRegistry::isModuleActive('hr');
     }
 }

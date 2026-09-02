@@ -10,6 +10,7 @@ use App\Filament\Resources\Shop\Products\Schemas\ProductForm;
 use App\Filament\Resources\Shop\Products\Tables\ProductsTable;
 use App\Filament\Resources\Shop\Products\Widgets\ProductStats;
 use App\Models\Shop\Product;
+use App\Services\ModuleRegistry;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -95,5 +96,10 @@ class ProductResource extends Resource
         $modelClass = static::$model;
 
         return (string) $modelClass::whereColumn('qty', '<', 'security_stock')->count();
+    }
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return ModuleRegistry::isModuleActive('shop');
     }
 }

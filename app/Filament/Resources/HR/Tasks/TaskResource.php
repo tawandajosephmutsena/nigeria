@@ -9,6 +9,7 @@ use App\Filament\Resources\HR\Tasks\Pages\ListTasks;
 use App\Filament\Resources\HR\Tasks\Schemas\TaskForm;
 use App\Filament\Resources\HR\Tasks\Tables\TasksTable;
 use App\Models\HR\Task;
+use App\Services\ModuleRegistry;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -59,5 +60,10 @@ class TaskResource extends Resource
         $modelClass = static::$model;
 
         return (string) $modelClass::where('status', TaskStatus::InProgress)->count();
+    }
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return ModuleRegistry::isModuleActive('hr');
     }
 }

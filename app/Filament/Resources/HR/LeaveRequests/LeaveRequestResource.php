@@ -11,6 +11,7 @@ use App\Filament\Resources\HR\LeaveRequests\Schemas\LeaveRequestForm;
 use App\Filament\Resources\HR\LeaveRequests\Schemas\LeaveRequestInfolist;
 use App\Filament\Resources\HR\LeaveRequests\Tables\LeaveRequestsTable;
 use App\Models\HR\LeaveRequest;
+use App\Services\ModuleRegistry;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -65,5 +66,10 @@ class LeaveRequestResource extends Resource
         $modelClass = static::$model;
 
         return (string) $modelClass::where('status', LeaveStatus::Pending)->count();
+    }
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return ModuleRegistry::isModuleActive('hr');
     }
 }

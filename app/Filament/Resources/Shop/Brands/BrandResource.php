@@ -10,6 +10,7 @@ use App\Filament\Resources\Shop\Brands\RelationManagers\ProductsRelationManager;
 use App\Filament\Resources\Shop\Brands\Schemas\BrandForm;
 use App\Filament\Resources\Shop\Brands\Tables\BrandsTable;
 use App\Models\Shop\Brand;
+use App\Services\ModuleRegistry;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -59,5 +60,10 @@ class BrandResource extends Resource
             'create' => CreateBrand::route('/create'),
             'edit' => EditBrand::route('/{record}/edit'),
         ];
+    }
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return ModuleRegistry::isModuleActive('shop');
     }
 }

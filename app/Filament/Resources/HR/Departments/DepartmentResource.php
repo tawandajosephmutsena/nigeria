@@ -7,6 +7,7 @@ use App\Filament\Resources\HR\Departments\RelationManagers\EmployeesRelationMana
 use App\Filament\Resources\HR\Departments\Schemas\DepartmentForm;
 use App\Filament\Resources\HR\Departments\Tables\DepartmentsTable;
 use App\Models\HR\Department;
+use App\Services\ModuleRegistry;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -53,5 +54,10 @@ class DepartmentResource extends Resource
         return [
             'index' => ManageDepartments::route('/'),
         ];
+    }
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return ModuleRegistry::isModuleActive('hr');
     }
 }

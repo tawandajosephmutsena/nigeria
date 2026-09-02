@@ -10,6 +10,7 @@ use App\Filament\Resources\Shop\Orders\Schemas\OrderForm;
 use App\Filament\Resources\Shop\Orders\Tables\OrdersTable;
 use App\Filament\Resources\Shop\Orders\Widgets\OrderStats;
 use App\Models\Shop\Order;
+use App\Services\ModuleRegistry;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -105,5 +106,10 @@ class OrderResource extends Resource
         $modelClass = static::$model;
 
         return (string) $modelClass::where('status', 'new')->count();
+    }
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return ModuleRegistry::isModuleActive('shop');
     }
 }

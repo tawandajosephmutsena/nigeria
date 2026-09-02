@@ -9,6 +9,7 @@ use App\Filament\Resources\HR\Timesheets\Schemas\TimesheetForm;
 use App\Filament\Resources\HR\Timesheets\Tables\TimesheetsTable;
 use App\Filament\Resources\HR\Timesheets\Widgets\TimesheetStats;
 use App\Models\HR\Timesheet;
+use App\Services\ModuleRegistry;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -55,5 +56,10 @@ class TimesheetResource extends Resource
             'create' => CreateTimesheet::route('/create'),
             'edit' => EditTimesheet::route('/{record}/edit'),
         ];
+    }
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return ModuleRegistry::isModuleActive('hr');
     }
 }

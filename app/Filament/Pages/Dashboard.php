@@ -2,25 +2,31 @@
 
 namespace App\Filament\Pages;
 
-use App\Filament\Widgets\FeaturesOverview;
+use App\Filament\Widgets\CmsStatsOverview;
+use App\Filament\Widgets\DashboardQuickActionsWidget;
+use App\Filament\Widgets\LatestMessagesWidget;
+use App\Filament\Widgets\LatestPetitionsWidget;
+use App\Filament\Widgets\RecentCommentsAndStoriesWidget;
 use Filament\Pages\Dashboard as BaseDashboard;
 use Filament\Widgets\AccountWidget;
-use Filament\Widgets\FilamentInfoWidget;
 
 class Dashboard extends BaseDashboard
 {
     protected static ?int $navigationSort = -2;
 
-    protected static ?string $title = 'Welcome';
+    protected static ?string $title = 'Campaign Dashboard';
 
-    protected ?string $heading = 'Welcome to the Filament Demo!';
+    protected ?string $heading = 'Unfinished — Maternal Health Reform Dashboard';
 
     public function getWidgets(): array
     {
         return [
             AccountWidget::class,
-            FilamentInfoWidget::class,
-            FeaturesOverview::class,
+            DashboardQuickActionsWidget::class,
+            CmsStatsOverview::class,
+            LatestPetitionsWidget::class,
+            RecentCommentsAndStoriesWidget::class,
+            LatestMessagesWidget::class,
         ];
     }
 }

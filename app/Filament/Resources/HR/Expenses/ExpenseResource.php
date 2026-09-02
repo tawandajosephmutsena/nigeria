@@ -12,6 +12,7 @@ use App\Filament\Resources\HR\Expenses\Schemas\ExpenseInfolist;
 use App\Filament\Resources\HR\Expenses\Tables\ExpensesTable;
 use App\Filament\Resources\HR\Expenses\Widgets\ExpenseStats;
 use App\Models\HR\Expense;
+use App\Services\ModuleRegistry;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -75,5 +76,10 @@ class ExpenseResource extends Resource
         $modelClass = static::$model;
 
         return (string) $modelClass::where('status', ExpenseStatus::Submitted)->count();
+    }
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return ModuleRegistry::isModuleActive('hr');
     }
 }

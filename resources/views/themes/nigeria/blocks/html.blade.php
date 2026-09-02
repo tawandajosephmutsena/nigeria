@@ -1,0 +1,2 @@
+{{-- Custom HTML --}}
+{!! $props['html'] ?? '' !!}

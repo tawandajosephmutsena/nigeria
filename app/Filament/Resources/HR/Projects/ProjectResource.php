@@ -14,6 +14,7 @@ use App\Filament\Resources\HR\Projects\Schemas\ProjectInfolist;
 use App\Filament\Resources\HR\Projects\Tables\ProjectsTable;
 use App\Filament\Resources\HR\Projects\Widgets\ProjectStats;
 use App\Models\HR\Project;
+use App\Services\ModuleRegistry;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -96,5 +97,10 @@ class ProjectResource extends Resource
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
             ]);
+    }
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return ModuleRegistry::isModuleActive('hr');
     }
 }

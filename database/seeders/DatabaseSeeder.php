@@ -54,11 +54,15 @@ class DatabaseSeeder extends Seeder
 
         // Admin
         $this->command->warn(PHP_EOL . 'Creating admin user...');
-        $user = $this->withProgressBar(1, fn () => User::factory(1)->create([
-            'name' => 'Demo User',
-            'email' => 'admin@filamentphp.com',
-            'password' => Hash::make('demo.Filament@2021!'),
-        ]));
+        $user = User::updateOrCreate(
+            ['email' => 'admin@filamentphp.com'],
+            [
+                'name' => 'Demo User',
+                'password' => Hash::make('demo.Filament@2021!'),
+                'email_verified_at' => now(),
+            ],
+        );
+        $user = $user instanceof \Illuminate\Support\Collection ? $user->first() : $user;
         $this->command->info('Admin user created.');
 
         // Shop
@@ -471,6 +475,9 @@ class DatabaseSeeder extends Seeder
                 ]);
             }));
         $this->command->info('Expenses created.');
+
+        // Nigeria CMS theme + demo data
+        $this->call(NigeriaSeeder::class);
     }
 
     protected function withProgressBar(int $amount, Closure $createCollectionOfOne): Collection

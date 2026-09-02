@@ -9,6 +9,7 @@ use App\Filament\Resources\Shop\Categories\RelationManagers\ProductsRelationMana
 use App\Filament\Resources\Shop\Categories\Schemas\CategoryForm;
 use App\Filament\Resources\Shop\Categories\Tables\CategoriesTable;
 use App\Models\Shop\ProductCategory;
+use App\Services\ModuleRegistry;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -57,5 +58,10 @@ class CategoryResource extends Resource
             'create' => CreateCategory::route('/create'),
             'edit' => EditCategory::route('/{record}/edit'),
         ];
+    }
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return ModuleRegistry::isModuleActive('shop');
     }
 }

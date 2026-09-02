@@ -10,6 +10,7 @@ use App\Filament\Resources\Shop\Customers\RelationManagers\PaymentsRelationManag
 use App\Filament\Resources\Shop\Customers\Schemas\CustomerForm;
 use App\Filament\Resources\Shop\Customers\Tables\CustomersTable;
 use App\Models\Shop\Customer;
+use App\Services\ModuleRegistry;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -75,5 +76,10 @@ class CustomerResource extends Resource
     public static function getGloballySearchableAttributes(): array
     {
         return ['name', 'email'];
+    }
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return ModuleRegistry::isModuleActive('shop');
     }
 }

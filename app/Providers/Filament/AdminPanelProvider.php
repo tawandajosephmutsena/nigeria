@@ -24,15 +24,16 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('admin')
+            ->path('admin')
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->login(Login::class)
             ->discoverClusters(in: app_path('Filament/Clusters'), for: 'App\\Filament\\Clusters')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
-            ->brandLogo(url('images/logo/dark.svg'))
-            ->darkModeBrandLogo(url('images/logo/primary.svg'))
+            ->sidebarCollapsibleOnDesktop()
             ->navigationGroups([
+                'Website',
                 'Shop',
                 'HR',
                 'Projects',
@@ -54,9 +55,15 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
             ])
             ->spa()
+            ->brandName('unfinished')
             ->colors([
-                'primary' => Color::Blue,
+                'primary' => Color::hex('#5FA98D'),
+                'gray' => Color::Zinc,
+                'info' => Color::hex('#7FB0C4'),
+                'success' => Color::hex('#6BAF92'),
+                'warning' => Color::Amber,
+                'danger' => Color::Rose,
             ])
-            ->font('Albert Sans');
+            ->font('Inter');
     }
 }
