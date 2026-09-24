@@ -59,7 +59,7 @@ class BudgetBurnRateChart extends ChartWidget
                 [
                     'label' => 'Total Budget',
                     'data' => $budgetLine,
-                    'borderColor' => '#22c55e',
+                    'borderColor' => '#f71089',
                     'borderDash' => [5, 5],
                     'pointRadius' => 0,
                     'fill' => false,

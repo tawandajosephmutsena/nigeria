@@ -70,7 +70,7 @@ class OrderValueDistributionChart extends ChartWidget
                     'label' => 'Orders',
                     'data' => array_values($ranges),
                     'backgroundColor' => [
-                        '#22c55e',
+                        '#f71089',
                         '#3b82f6',
                         '#8b5cf6',
                         '#f59e0b',
@@ -78,7 +78,7 @@ class OrderValueDistributionChart extends ChartWidget
                         '#ec4899',
                     ],
                     'borderColor' => [
-                        '#22c55e',
+                        '#f71089',
                         '#3b82f6',
                         '#8b5cf6',
                         '#f59e0b',

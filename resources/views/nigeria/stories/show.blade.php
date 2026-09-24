@@ -31,9 +31,9 @@
             font-style: normal;
         }
         :root {
-            --emerald-500: #149865; --emerald-400: #47d399; --emerald-600: #0f7a51;
-            --dark-bg: #07120c; --dark-surface: #0f1c14; --dark-card: #14241b;
-            --cream: #fbfbfa; --warm-white: #f6f6f2; --charcoal: #0e1410; --text-muted: #64748b;
+            --orange-500: #f71089; --orange-400: #ff2a9d; --orange-600: #db0c77;
+            --dark-bg: #120a16; --dark-surface: #1a0f20; --dark-card: #23142c;
+            --cream: #fbfbfa; --warm-white: #f6f6f2; --charcoal: #140e0e; --text-muted: #64748b;
             --font-headline: 'Anton', 'MarkPro', sans-serif;
             --font-body: 'Plus Jakarta Sans', sans-serif;
             --radius-md: 18px;
@@ -44,17 +44,17 @@
 
         .site-header {
             position: sticky; top: 0; z-index: 1000;
-            background: rgba(7, 18, 12, 0.9); backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255,255,255,0.08); padding: 0 28px;
+            background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(247, 16, 137, 0.12); padding: 0 28px;
         }
         .header-inner { max-width: 1320px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 74px; }
         .logo-brand { display: flex; align-items: center; gap: 8px; font-family: var(--font-headline); font-size: 1.8rem; color: white; text-transform: uppercase; }
-        .logo-dot { width: 8px; height: 8px; background: var(--emerald-400); border-radius: 50%; }
-        .back-link { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.8); transition: color 0.2s; }
-        .back-link:hover { color: var(--emerald-400); }
+        .logo-dot { width: 8px; height: 8px; background: var(--orange-400); border-radius: 50%; }
+        .back-link { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #1e293b; transition: color 0.2s; }
+        .back-link:hover { color: var(--orange-400); }
 
         .story-wrapper { max-width: 820px; margin: 0 auto; padding: 60px 24px 80px; }
-        .story-category { display: inline-block; background: #eafaf1; color: var(--emerald-600); font-size: 0.75rem; font-weight: 800; padding: 6px 14px; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+        .story-category { display: inline-block; background: #fff0f7; color: var(--orange-600); border: 1px solid #fbcfe8; font-size: 0.75rem; font-weight: 800; padding: 6px 14px; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
         .story-title { font-family: var(--font-headline); font-size: clamp(2.2rem, 4.5vw, 3.4rem); line-height: 1.15; text-transform: uppercase; margin-bottom: 20px; color: var(--charcoal); }
         .story-meta { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 32px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
         .story-cover { width: 100%; height: 440px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: 40px; }
@@ -64,7 +64,7 @@
         .share-card { background: white; border-radius: var(--radius-md); border: 1px solid rgba(0,0,0,0.06); padding: 32px; margin-top: 48px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); text-align: center; }
         .share-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 50px; color: white; font-weight: 700; font-size: .85rem; text-transform: uppercase; margin: 6px; }
 
-        footer.site-footer { padding: 60px 28px; background: #050b07; color: white; text-align: center; font-size: .88rem; }
+        footer.site-footer { padding: 60px 28px; background: #100814; border-top: 1px solid rgba(247, 16, 137, 0.15); color: white; text-align: center; font-size: .88rem; }
     </style>
 </head>
 <body>
@@ -72,8 +72,7 @@
 <header class="site-header">
     <div class="header-inner">
         <a href="/" class="logo-brand">
-            <span>unfinished</span>
-            <span class="logo-dot"></span>
+            <img src="{{ asset('themes/nigeria/img/logos/logo-nav-horizontal.webp') }}" alt="UNFINISHED" style="height:42px;width:auto;display:block;">
         </a>
         <a href="{{ route('stories.index') }}" class="back-link">← All Community Stories</a>
     </div>
@@ -116,7 +115,10 @@
 </main>
 
 <footer class="site-footer">
-    <p>© {{ date('Y') }} unfinished — Abortion Law Reform Campaign Nigeria. Finish the law. Protect her future.</p>
+    <img src="{{ asset('themes/nigeria/img/logos/logo-footer-square.webp') }}" alt="UNFINISHED" style="height:64px;width:auto;margin:0 auto 18px;display:block;">
+    <p style="font-family:var(--font-headline);font-size:1.1rem;color:#ff60be;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;">Unfinished Dreams • Unfinished Futures</p>
+    <p style="color:rgba(255,255,255,0.7);margin-bottom:14px;">Reform the law. Protect our future. Sign the petition.</p>
+    <p style="color:rgba(255,255,255,0.4);font-size:.82rem;">© {{ date('Y') }} UNFINISHED — Preventing Maternal Mortality. All rights reserved.</p>
 </footer>
 
 </body>

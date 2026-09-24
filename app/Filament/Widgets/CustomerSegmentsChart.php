@@ -69,7 +69,7 @@ class CustomerSegmentsChart extends ChartWidget
                     'backgroundColor' => [
                         '#9ca3af',
                         '#3b82f6',
-                        '#22c55e',
+                        '#f71089',
                         '#f59e0b',
                     ],
                 ],

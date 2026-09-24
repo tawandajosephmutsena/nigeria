@@ -1,6 +1,6 @@
 {{-- Stats / Fun Factor Section --}}
 <section id="stats" class="py-20 bg-cover bg-center relative" style="background-image: url('{{ asset('images/stats-bg.jpg') }}');">
-    <div class="absolute inset-0 bg-green-900/90"></div>
+    <div class="absolute inset-0 bg-orange-900/90"></div>
     <div class="relative max-w-7xl mx-auto px-4">
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             @foreach([
@@ -14,7 +14,7 @@
                     <svg class="w-9 h-9 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="{{ $stat[2] }}"/></svg>
                 </div>
                 <div class="text-5xl font-black text-white mb-2">{{ $stat[0] }}</div>
-                <div class="text-green-300 font-bold uppercase tracking-[0.2em] text-sm">{{ $stat[1] }}</div>
+                <div class="text-[#f472b6] font-bold uppercase tracking-[0.2em] text-sm">{{ $stat[1] }}</div>
             </div>
             @endforeach
         </div>

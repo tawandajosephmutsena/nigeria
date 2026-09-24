@@ -3,15 +3,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>UNFINISHED — Abortion Law Reform Campaign Nigeria</title>
-    <meta name="description" content="Finish the law. Protect her future. Amplifying the call to review Nigeria's maternal healthcare and abortion laws to save women's lives.">
+    <title>UNFINISHED — Preventing Maternal Mortality</title>
+    <meta name="description" content="Unfinished Dreams. Unfinished Futures. Reform the law. Protect our future. Sign the petition to prevent maternal mortality in Nigeria.">
 
     {{-- Open Graph / Social --}}
-    <meta property="og:title" content="UNFINISHED — Because Every Woman's Life Is Still Being Written">
-    <meta property="og:description" content="Join healthcare workers, citizens, and policymakers demanding legal clarity for lifesaving maternal care in Nigeria. Sign the petition.">
+    <meta property="og:title" content="UNFINISHED — Unfinished Dreams. Unfinished Futures.">
+    <meta property="og:description" content="Reform the law. Protect our future. Sign the petition to ensure no woman's life or dreams are left unfinished.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/') }}">
-    <meta property="og:image" content="{{ asset('themes/nigeria/social_gallery/poster-1.jpg') }}">
+    <meta property="og:image" content="{{ asset('themes/nigeria/social_gallery/unfinished-preventing-maternal-mortality-1.jpg') }}">
+
+    {{-- Favicon --}}
+    <link rel="icon" type="image/webp" href="{{ asset('themes/nigeria/img/logos/unfinished-logo-option-5.webp') }}">
 
     {{-- Fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,6 +31,7 @@
     <style>
     /* ═══════════════════════════════════════════════════
        DESIGN SYSTEM — UNFINISHED CAMPAIGN
+       Theme: Approved Vibrant Magenta / Luminous Alive
        ═══════════════════════════════════════════════════ */
     @font-face {
         font-family: 'MarkPro';
@@ -36,26 +40,58 @@
     }
 
     :root {
-        --emerald-50:  #f0fdf6;  --emerald-100: #d9f7e8;
-        --emerald-200: #b3efd3;  --emerald-300: #7de3b8;
-        --emerald-400: #47d399;  --emerald-500: #149865;
-        --emerald-600: #0f7a51;  --emerald-700: #0e6142;
-        --emerald-800: #0b4a32;  --emerald-900: #073523;
-        --dark-bg:     #07120c;  --dark-surface: #0f1c14;
-        --dark-card:   #14241b;  --charcoal:    #0e1410;
-        --text-body:   #334155;  --text-muted:  #64748b;
-        --cream:       #fbfbfa;  --warm-white:  #f6f6f2;
-        --gold-accent: #c9a96e;
+        /* Primary Approved Logo Colors (Vibrant Magenta / Hot Rose) */
+        --brand-50:   #fff0f7;
+        --brand-100:  #fce7f3;
+        --brand-200:  #fbcfe8;
+        --brand-300:  #f472b6;
+        --brand-400:  #ff2a9d;
+        --brand-500:  #f71089;  /* PRIMARY BRAND ACCENT: Exact Approved Logo Color */
+        --brand-600:  #db0c77;
+        --brand-700:  #b50761;
+        --brand-800:  #8d084d;
+        --brand-900:  #550730;
+
+        /* Compatibility aliases mapped to new brand theme */
+        --orange-50:  var(--brand-50);
+        --orange-100: var(--brand-100);
+        --orange-200: var(--brand-200);
+        --orange-300: var(--brand-300);
+        --orange-400: var(--brand-400);
+        --orange-500: var(--brand-500);
+        --orange-600: var(--brand-600);
+        --orange-700: var(--brand-700);
+        --orange-800: var(--brand-800);
+        --orange-900: var(--brand-900);
+
+        /* Canvas & Surfaces: Bright, Alive, Modern */
+        --canvas-bg:     #fcfbfe;
+        --canvas-pure:   #ffffff;
+        --card-surface:  #ffffff;
+        --card-border:   rgba(247, 16, 137, 0.12);
+
+        /* Contrast Obsidian Plum for hero and footer base */
+        --dark-bg:       #120a16;
+        --dark-surface:  #1a0f20;
+        --dark-card:     #23142c;
+        --charcoal:      #0f172a;
+        --text-body:     #334155;
+        --text-muted:    #64748b;
+        --cream:         #fcfbfe;
+        --warm-white:    #ffffff;
+        --gold-accent:   #f71089;
+
         --radius-sm: 10px; --radius-md: 18px; --radius-lg: 28px;
-        --shadow-sm: 0 2px 10px rgba(0,0,0,0.04);
-        --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
-        --shadow-xl: 0 24px 60px rgba(0,0,0,0.18);
+        --shadow-sm: 0 2px 10px rgba(0,0,0,0.03);
+        --shadow-md: 0 10px 30px rgba(247, 16, 137, 0.06), 0 2px 8px rgba(0,0,0,0.04);
+        --shadow-xl: 0 24px 60px rgba(247, 16, 137, 0.12), 0 4px 16px rgba(0,0,0,0.06);
+
         --font-headline: 'Anton', 'MarkPro', sans-serif;
         --font-body: 'Plus Jakarta Sans', sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: initial; /* Lenis handles this */ }
+    html { scroll-behavior: initial; }
     html.lenis, html.lenis body { height: auto; }
     .lenis.lenis-smooth { scroll-behavior: auto !important; }
     .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
@@ -63,20 +99,20 @@
 
     body {
         font-family: var(--font-body); color: var(--charcoal);
-        background: var(--cream); -webkit-font-smoothing: antialiased;
+        background: var(--canvas-bg); -webkit-font-smoothing: antialiased;
         line-height: 1.65; overflow-x: hidden;
     }
     img { max-width: 100%; height: auto; display: block; }
     a { text-decoration: none; color: inherit; transition: color .25s ease; }
     button { cursor: pointer; }
 
-    /* ═══ CUSTOM CURSOR (disabled — native cursor used instead) ═══ */
+    /* ═══ CUSTOM CURSOR ═══ */
     .cursor-dot, .cursor-ring, .cursor-label { display: none; }
 
     /* ═══ WEBGL CANVAS ═══ */
     #webgl-canvas {
         position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-        z-index: 0; pointer-events: none; opacity: 0.35;
+        z-index: 0; pointer-events: none; opacity: 0.45;
     }
 
     /* ═══ CINEMATIC PRELOADER ═══ */
@@ -95,122 +131,135 @@
         display: inline-block; transform: translateY(110%); opacity: 0;
     }
     .preloader-bar-track {
-        width: 180px; height: 2px; background: rgba(255,255,255,0.1);
+        width: 180px; height: 2px; background: rgba(255,255,255,0.12);
         border-radius: 2px; overflow: hidden;
     }
     .preloader-bar-fill {
-        width: 0%; height: 100%; background: var(--emerald-400);
+        width: 0%; height: 100%; background: var(--brand-500);
+        box-shadow: 0 0 12px var(--brand-500);
         border-radius: 2px;
     }
     .preloader-sub {
-        font-size: .72rem; letter-spacing: 3px; text-transform: uppercase;
-        color: rgba(255,255,255,0.4); opacity: 0;
+        font-size: .75rem; letter-spacing: 3px; text-transform: uppercase;
+        color: rgba(255,255,255,0.6); opacity: 0; font-weight: 600;
     }
 
-    /* ═══ HEADER ═══ */
+    /* ═══ HEADER / NAV ═══ */
     .site-header {
         position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-        background: rgba(7, 18, 12, 0.88);
+        background: rgba(255, 255, 255, 0.94);
         backdrop-filter: blur(20px) saturate(180%);
         -webkit-backdrop-filter: blur(20px) saturate(180%);
-        border-bottom: 1px solid rgba(255,255,255,0.06);
+        border-bottom: 1px solid rgba(247, 16, 137, 0.12);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.03);
         transition: all .4s cubic-bezier(.4,0,.2,1);
     }
     .site-header.scrolled {
-        background: rgba(7, 18, 12, 0.96);
-        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        border-bottom: 1px solid rgba(247, 16, 137, 0.18);
     }
     .header-inner {
         max-width: 1380px; margin: 0 auto; padding: 0 36px;
-        display: flex; align-items: center; justify-content: space-between; height: 76px;
+        display: flex; align-items: center; justify-content: space-between; height: 78px;
     }
-    .logo-brand { display: flex; align-items: center; gap: 10px; }
-    .logo-text {
-        font-family: var(--font-headline); font-size: 1.9rem; letter-spacing: 2px;
-        color: white; text-transform: uppercase; line-height: 1;
+    .logo-brand { display: flex; align-items: center; gap: 12px; }
+    .nav-logo-img {
+        height: 44px; width: auto; display: block;
+        transition: transform .25s ease;
     }
-    .logo-dot {
-        width: 8px; height: 8px; background: var(--emerald-400);
-        border-radius: 50%; display: inline-block;
-        animation: logoPulse 3s ease-in-out infinite;
-    }
-    @keyframes logoPulse {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: .6; transform: scale(0.85); }
-    }
+    .logo-brand:hover .nav-logo-img { transform: scale(1.02); }
+
     .nav-links { display: flex; align-items: center; gap: 8px; }
     .nav-link {
-        font-size: .78rem; font-weight: 700; text-transform: uppercase;
-        letter-spacing: 1.2px; color: rgba(255,255,255,0.7);
+        font-size: .8rem; font-weight: 700; text-transform: uppercase;
+        letter-spacing: 1.2px; color: #1e293b;
         padding: 8px 14px; border-radius: 8px; transition: all .2s ease;
         position: relative;
     }
     .nav-link::after {
-        content: ''; position: absolute; bottom: 4px; left: 50%; width: 0; height: 1.5px;
-        background: var(--emerald-400); transition: all .3s cubic-bezier(.4,0,.2,1);
+        content: ''; position: absolute; bottom: 4px; left: 50%; width: 0; height: 2px;
+        background: var(--brand-500); transition: all .3s cubic-bezier(.4,0,.2,1);
         transform: translateX(-50%);
     }
-    .nav-link:hover { color: white; }
+    .nav-link:hover { color: var(--brand-500); }
     .nav-link:hover::after { width: 60%; }
+
     .btn-nav-petition {
-        background: var(--emerald-500); color: white; padding: 10px 22px;
-        border-radius: 50px; font-size: .78rem; font-weight: 800;
+        background: var(--brand-500); color: white; padding: 11px 24px;
+        border-radius: 50px; font-size: .8rem; font-weight: 800;
         text-transform: uppercase; letter-spacing: 1px;
-        box-shadow: 0 4px 18px rgba(20,152,101,0.35); transition: all .3s ease;
+        box-shadow: 0 4px 18px rgba(247,16,137,0.35); transition: all .3s ease;
     }
     .btn-nav-petition:hover {
-        background: var(--emerald-400); color: var(--dark-bg); transform: translateY(-2px);
-        box-shadow: 0 8px 26px rgba(71,211,153,0.5);
+        background: var(--brand-600); color: white; transform: translateY(-2px);
+        box-shadow: 0 8px 26px rgba(247,16,137,0.5);
     }
+
+    .mobile-drawer {
+        background: #ffffff;
+        border-top: 1px solid rgba(247, 16, 137, 0.12);
+        padding: 24px 28px; display: flex; flex-direction: column; gap: 8px;
+        box-shadow: 0 16px 36px rgba(0,0,0,0.1);
+    }
+    .mobile-logo-img { height: 38px; width: auto; margin-bottom: 12px; }
+    .mobile-link {
+        padding: 12px 0; font-size: .94rem; font-weight: 700; color: #1e293b;
+        text-transform: uppercase; letter-spacing: 1px;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .mobile-link:hover { color: var(--brand-500); }
 
     /* ═══ HERO ═══ */
     .hero-wrap {
-        position: relative; height: 100vh; min-height: 740px;
+        position: relative; height: 100vh; min-height: 760px;
         overflow: hidden; background: var(--dark-bg);
+        margin-top: 78px;
     }
     .hero-video-bg {
         position: absolute; inset: 0; width: 100%; height: 100%;
-        object-fit: cover; z-index: 0; filter: brightness(0.85) contrast(1.05) saturate(1.05);
+        object-fit: cover; z-index: 0; filter: brightness(0.88) contrast(1.05) saturate(1.1);
         will-change: transform;
     }
     .hero-overlay {
         position: absolute; inset: 0; z-index: 1;
         background: linear-gradient(180deg,
-            rgba(7,18,12,0.15) 0%,
-            rgba(7,18,12,0.3) 45%,
-            rgba(7,18,12,0.75) 100%);
+            rgba(18,10,22,0.45) 0%,
+            rgba(18,10,22,0.65) 55%,
+            rgba(18,10,22,0.92) 100%),
+            radial-gradient(circle at 50% 25%, rgba(247, 16, 137, 0.22) 0%, transparent 65%);
     }
     .hero-grain {
         position: absolute; inset: 0; z-index: 2;
-        opacity: 0.04; pointer-events: none;
+        opacity: 0.035; pointer-events: none;
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
         background-size: 128px;
     }
     .hero-content {
         position: relative; z-index: 3; height: 100%;
         display: flex; align-items: center; justify-content: center; text-align: center;
-        padding: 80px 24px 60px;
+        padding: 40px 24px 60px;
     }
-    .hero-inner { max-width: 1000px; }
+    .hero-inner { max-width: 1020px; }
     .hero-badge {
         display: inline-flex; align-items: center; gap: 10px;
-        background: rgba(20,152,101,0.18); border: 1px solid rgba(71,211,153,0.35);
-        backdrop-filter: blur(12px); color: var(--emerald-300);
-        font-size: .72rem; font-weight: 800; padding: 8px 22px; border-radius: 50px;
-        margin-bottom: 28px; text-transform: uppercase; letter-spacing: 2.5px;
+        background: rgba(247,16,137,0.18); border: 1px solid rgba(255,42,157,0.4);
+        backdrop-filter: blur(12px); color: #ff60be;
+        font-size: .75rem; font-weight: 800; padding: 8px 24px; border-radius: 50px;
+        margin-bottom: 26px; text-transform: uppercase; letter-spacing: 2px;
         opacity: 0; transform: translateY(20px);
     }
     .hero-badge-pulse {
-        width: 7px; height: 7px; background: var(--emerald-400); border-radius: 50%;
-        box-shadow: 0 0 0 0 rgba(71,211,153,0.7); animation: pulseDot 2.5s infinite;
+        width: 8px; height: 8px; background: var(--brand-400); border-radius: 50%;
+        box-shadow: 0 0 0 0 rgba(255,42,157,0.7); animation: pulseDot 2.5s infinite;
     }
     @keyframes pulseDot {
-        0% { box-shadow: 0 0 0 0 rgba(71,211,153,0.6); }
-        70% { box-shadow: 0 0 0 12px rgba(71,211,153,0); }
-        100% { box-shadow: 0 0 0 0 rgba(71,211,153,0); }
+        0% { box-shadow: 0 0 0 0 rgba(255,42,157,0.7); }
+        70% { box-shadow: 0 0 0 14px rgba(255,42,157,0); }
+        100% { box-shadow: 0 0 0 0 rgba(255,42,157,0); }
     }
 
-    /* Split-text word reveal system */
+    /* Split-text word reveal */
     .reveal-text { overflow: hidden; }
     .word-wrap { display: inline-block; overflow: hidden; vertical-align: bottom; }
     .word-inner {
@@ -221,56 +270,77 @@
     .hero-title {
         font-family: var(--font-headline);
         font-size: clamp(3.2rem, 7.5vw, 6.5rem);
-        color: white; line-height: 0.98; margin-bottom: 26px;
+        color: white; line-height: 0.96; margin-bottom: 24px;
         letter-spacing: -0.5px; text-transform: uppercase;
-        text-shadow: 0 4px 24px rgba(0,0,0,0.7);
+        text-shadow: 0 4px 24px rgba(0,0,0,0.8);
     }
-    .hero-title .highlight { color: var(--emerald-400); text-shadow: 0 4px 24px rgba(0,0,0,0.8); }
+    .hero-title .highlight {
+        color: var(--brand-400);
+        text-shadow: 0 0 35px rgba(247,16,137,0.6), 0 4px 24px rgba(0,0,0,0.8);
+    }
     .hero-sub {
         font-size: clamp(1rem, 1.8vw, 1.2rem);
-        color: rgba(255,255,255,0.92); max-width: 720px; margin: 0 auto 40px;
+        color: rgba(255,255,255,0.92); max-width: 760px; margin: 0 auto 34px;
         line-height: 1.75; font-weight: 400;
         opacity: 0; transform: translateY(30px);
         text-shadow: 0 2px 14px rgba(0,0,0,0.8);
     }
+
+    /* Unified Headline + CTA Layout Resolution */
+    .hero-cta-lockup {
+        display: flex; flex-direction: column; align-items: center; gap: 20px;
+        margin-bottom: 34px; opacity: 0; transform: translateY(30px);
+    }
+    .hero-cta-tagline {
+        display: inline-flex; align-items: center; gap: 12px;
+        font-family: var(--font-headline); font-size: clamp(1.05rem, 2.2vw, 1.45rem);
+        text-transform: uppercase; letter-spacing: 1.5px;
+        color: #ffffff;
+        background: rgba(247, 16, 137, 0.22);
+        border: 1px solid rgba(255, 42, 157, 0.4);
+        padding: 10px 28px; border-radius: 50px;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 8px 24px rgba(247, 16, 137, 0.25);
+    }
+    .cta-dot {
+        width: 8px; height: 8px; border-radius: 50%;
+        background: #ff2a9d; box-shadow: 0 0 10px #ff2a9d;
+        display: inline-block;
+    }
+
     .hero-btns {
         display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
-        margin-bottom: 40px;
     }
     .magnetic-wrap { position: relative; display: inline-block; }
     .btn-hero-primary {
-        background: var(--emerald-500); color: white; padding: 18px 42px;
-        border-radius: 50px; font-weight: 800; font-size: .85rem;
+        background: var(--brand-500); color: white; padding: 18px 42px;
+        border-radius: 50px; font-weight: 800; font-size: .88rem;
         text-transform: uppercase; letter-spacing: 1.5px; border: none;
-        box-shadow: 0 8px 32px rgba(20,152,101,0.4);
-        transition: background .3s, box-shadow .3s;
+        box-shadow: 0 8px 32px rgba(247,16,137,0.45);
+        transition: background .3s, box-shadow .3s, transform .2s;
         display: inline-flex; align-items: center; gap: 10px;
         position: relative; overflow: hidden;
     }
-    .btn-hero-primary::before {
-        content: ''; position: absolute; inset: 0;
-        background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
-        opacity: 0; transition: opacity .3s;
-    }
-    .btn-hero-primary:hover::before { opacity: 1; }
     .btn-hero-primary:hover {
-        background: var(--emerald-400); color: var(--dark-bg);
-        box-shadow: 0 16px 48px rgba(71,211,153,0.55);
+        background: var(--brand-600); color: white;
+        box-shadow: 0 16px 48px rgba(247,16,137,0.6);
+        transform: translateY(-2px);
     }
     .btn-hero-secondary {
-        border: 1.5px solid rgba(255,255,255,0.3); color: white;
+        border: 1.5px solid rgba(255,255,255,0.35); color: white;
         padding: 18px 38px; border-radius: 50px;
-        font-weight: 800; font-size: .85rem; text-transform: uppercase;
+        font-weight: 800; font-size: .88rem; text-transform: uppercase;
         letter-spacing: 1.5px; backdrop-filter: blur(8px);
         transition: all .3s ease; display: inline-flex; align-items: center; gap: 10px;
     }
     .btn-hero-secondary:hover {
-        background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.6);
+        background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.7);
     }
+
     .hero-evidence {
         display: inline-flex; align-items: center; gap: 12px;
-        background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.08);
-        padding: 8px 20px; border-radius: 30px; color: rgba(255,255,255,0.75);
+        background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.12);
+        padding: 8px 22px; border-radius: 30px; color: rgba(255,255,255,0.85);
         font-size: .8rem; opacity: 0; transform: translateY(20px);
     }
     .hero-scroll-hint {
@@ -279,7 +349,7 @@
         opacity: 0;
     }
     .scroll-line {
-        width: 1px; height: 48px; background: linear-gradient(to bottom, var(--emerald-400), transparent);
+        width: 2px; height: 48px; background: linear-gradient(to bottom, var(--brand-400), transparent);
         animation: scrollPulse 2s ease-in-out infinite;
     }
     @keyframes scrollPulse {
@@ -287,30 +357,32 @@
         50% { opacity: 1; transform: scaleY(1.15); }
     }
     .scroll-text {
-        font-size: .6rem; letter-spacing: 3px; text-transform: uppercase;
-        color: rgba(255,255,255,0.4); writing-mode: vertical-rl;
+        font-size: .62rem; letter-spacing: 3px; text-transform: uppercase;
+        color: rgba(255,255,255,0.5); writing-mode: vertical-rl;
     }
 
     /* ═══ MARQUEE TICKER ═══ */
     .marquee-wrap {
         overflow: hidden; padding: 18px 0;
-        background: linear-gradient(90deg, var(--emerald-600) 0%, var(--emerald-500) 50%, var(--emerald-600) 100%);
-        border-top: 1px solid rgba(255,255,255,0.15);
-        border-bottom: 1px solid rgba(255,255,255,0.15);
+        background: linear-gradient(90deg, #db0c77 0%, #f71089 50%, #db0c77 100%);
+        border-top: 1px solid rgba(255,255,255,0.2);
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        box-shadow: 0 4px 20px rgba(247,16,137,0.2);
     }
     .marquee-track {
         display: flex; gap: 0; width: max-content;
-        animation: marqueeScroll 40s linear infinite;
+        animation: marqueeScroll 35s linear infinite;
     }
     .marquee-item {
         flex-shrink: 0; padding: 0 36px;
-        font-family: var(--font-headline); font-size: 1.05rem;
+        font-family: var(--font-headline); font-size: 1.1rem;
         letter-spacing: 3px; text-transform: uppercase; color: white;
         white-space: nowrap; display: flex; align-items: center; gap: 36px;
     }
     .marquee-dot {
-        width: 6px; height: 6px; background: rgba(255,255,255,0.5);
+        width: 7px; height: 7px; background: rgba(255,255,255,0.7);
         border-radius: 50%; flex-shrink: 0;
+        box-shadow: 0 0 6px rgba(255,255,255,0.8);
     }
     @keyframes marqueeScroll {
         0% { transform: translateX(0); }
@@ -319,14 +391,14 @@
 
     /* ═══ SECTION COMMONS ═══ */
     .section-container { max-width: 1380px; margin: 0 auto; padding: 0 36px; }
-    .section-padding { padding: 130px 0; }
+    .section-padding { padding: 120px 0; }
     .section-label {
-        font-size: .72rem; font-weight: 900; text-transform: uppercase;
-        letter-spacing: 4px; color: var(--emerald-600); margin-bottom: 14px;
+        font-size: .75rem; font-weight: 900; text-transform: uppercase;
+        letter-spacing: 4px; color: var(--brand-600); margin-bottom: 14px;
         display: flex; align-items: center; gap: 14px;
     }
     .section-line {
-        width: 0; height: 1.5px; background: var(--emerald-500);
+        width: 0; height: 2px; background: var(--brand-500);
         display: inline-block;
     }
     .section-title {
@@ -336,38 +408,39 @@
         letter-spacing: -0.3px; text-transform: uppercase; margin-bottom: 18px;
     }
     .section-subtitle {
-        color: var(--text-muted); max-width: 640px;
+        color: var(--text-muted); max-width: 680px;
         font-size: 1.05rem; line-height: 1.75; font-weight: 400;
     }
     .divider-line {
         width: 0; height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(20,152,101,0.25), transparent);
+        background: linear-gradient(90deg, transparent, rgba(247,16,137,0.25), transparent);
         margin: 0 auto;
     }
 
-    /* ═══ NARRATIVE / ABOUT ═══ */
+    /* ═══ ABOUT / NARRATIVE ═══ */
     .narrative-wrap {
-        background: linear-gradient(135deg, #071910 0%, #0d281a 100%);
-        color: white; border-radius: var(--radius-lg); padding: 72px 56px;
+        background: linear-gradient(135deg, #ffffff 0%, #fff2f8 100%);
+        color: var(--charcoal); border-radius: var(--radius-lg); padding: 72px 56px;
         position: relative; overflow: hidden;
-        border: 1px solid rgba(255,255,255,0.08);
+        border: 1.5px solid rgba(247, 16, 137, 0.16);
+        box-shadow: 0 20px 60px rgba(247, 16, 137, 0.08);
     }
     .narrative-wrap::before {
-        content: ''; position: absolute; top: -60%; right: -20%;
+        content: ''; position: absolute; top: -50%; right: -15%;
         width: 500px; height: 500px; border-radius: 50%;
-        background: radial-gradient(circle, rgba(71,211,153,0.08), transparent 70%);
+        background: radial-gradient(circle, rgba(247,16,137,0.08), transparent 70%);
         pointer-events: none;
     }
     .narrative-quote {
         font-family: var(--font-headline);
-        font-size: clamp(1.9rem, 3.8vw, 2.8rem);
+        font-size: clamp(2rem, 3.8vw, 3rem);
         line-height: 1.12; text-transform: uppercase;
-        color: var(--emerald-300); margin-bottom: 24px;
+        color: var(--brand-500); margin-bottom: 24px;
     }
     .narrative-img-wrap {
         border-radius: var(--radius-md); overflow: hidden;
-        box-shadow: 0 24px 60px rgba(0,0,0,0.5);
-        border: 1px solid rgba(255,255,255,0.1);
+        box-shadow: 0 20px 50px rgba(247,16,137,0.12), 0 4px 12px rgba(0,0,0,0.05);
+        border: 1.5px solid rgba(247,16,137,0.2);
     }
     .narrative-img-wrap img {
         width: 100%; height: auto; object-fit: cover;
@@ -375,50 +448,49 @@
     }
 
     /* ═══ STATS ═══ */
-    .stats-dark-wrap {
-        background: var(--dark-bg); color: white;
+    .stats-section {
+        background: linear-gradient(180deg, #ffffff 0%, #fdf2f8 50%, #fcfbfe 100%);
         padding: 120px 0; position: relative; overflow: hidden;
     }
-    .stats-dark-wrap::before {
-        content: ''; position: absolute; top: 0; left: 0; right: 0;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(71,211,153,0.3), transparent);
+    .stats-section::before {
+        content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(247,16,137,0.25), transparent);
     }
     .stats-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-        gap: 24px;
+        gap: 26px;
     }
-    .stat-card-dark {
-        background: rgba(255,255,255,0.03);
-        border: 1px solid rgba(255,255,255,0.07);
+    .stat-card-alive {
+        background: #ffffff;
+        border: 1.5px solid rgba(247, 16, 137, 0.14);
         border-radius: var(--radius-md); padding: 40px 30px;
         text-align: left; transition: all .45s cubic-bezier(.4,0,.2,1);
         position: relative; overflow: hidden;
+        box-shadow: 0 10px 30px rgba(247, 16, 137, 0.05), 0 2px 8px rgba(0,0,0,0.03);
     }
-    .stat-card-dark::before {
-        content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0;
-        background: var(--emerald-400); transition: height .6s cubic-bezier(.4,0,.2,1);
+    .stat-card-alive::before {
+        content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 0;
+        background: var(--brand-500); transition: height .5s cubic-bezier(.4,0,.2,1);
     }
-    .stat-card-dark:hover {
-        border-color: rgba(71,211,153,0.3); transform: translateY(-4px);
-        background: rgba(255,255,255,0.05);
-        box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    .stat-card-alive:hover {
+        border-color: rgba(247, 16, 137, 0.4); transform: translateY(-5px);
+        box-shadow: 0 20px 50px rgba(247, 16, 137, 0.15);
     }
-    .stat-card-dark:hover::before { height: 100%; }
+    .stat-card-alive:hover::before { height: 100%; }
     .stat-big-number {
         font-family: var(--font-headline);
         font-size: clamp(3rem, 5.5vw, 4.4rem);
-        color: var(--emerald-300); line-height: 1;
+        color: var(--brand-500); line-height: 1;
         margin-bottom: 14px;
     }
     .stat-heading {
-        font-size: .88rem; font-weight: 800;
+        font-size: .9rem; font-weight: 800;
         text-transform: uppercase; letter-spacing: 1.2px;
-        color: white; margin-bottom: 12px;
+        color: var(--charcoal); margin-bottom: 12px;
     }
     .stat-desc {
-        font-size: .88rem; color: rgba(255,255,255,0.6);
+        font-size: .88rem; color: var(--text-body);
         line-height: 1.7;
     }
 
@@ -429,7 +501,7 @@
         gap: 28px;
     }
     .pillar-card {
-        background: white; border: 1px solid rgba(0,0,0,0.05);
+        background: #ffffff; border: 1.5px solid rgba(247, 16, 137, 0.12);
         border-radius: var(--radius-md); padding: 44px 34px;
         box-shadow: var(--shadow-sm);
         transition: all .4s cubic-bezier(.4,0,.2,1);
@@ -438,19 +510,19 @@
     }
     .pillar-card::after {
         content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
-        background: linear-gradient(90deg, var(--emerald-400), var(--emerald-600));
+        background: linear-gradient(90deg, #ff2a9d, #f71089);
         transform: scaleX(0); transform-origin: left;
         transition: transform .5s cubic-bezier(.4,0,.2,1);
     }
     .pillar-card:hover {
         transform: translateY(-8px);
-        box-shadow: 0 28px 70px rgba(0,0,0,0.1);
-        border-color: rgba(20,152,101,0.2);
+        box-shadow: 0 24px 60px rgba(247, 16, 137, 0.14);
+        border-color: rgba(247, 16, 137, 0.35);
     }
     .pillar-card:hover::after { transform: scaleX(1); }
     .pillar-num {
         font-family: var(--font-headline); font-size: 3.2rem;
-        color: var(--emerald-500); opacity: .15;
+        color: var(--brand-500); opacity: .18;
         line-height: 1; margin-bottom: 16px;
     }
     .pillar-title {
@@ -463,12 +535,12 @@
         line-height: 1.8; margin-bottom: 28px;
     }
     .pillar-link {
-        font-size: .78rem; font-weight: 800; text-transform: uppercase;
-        letter-spacing: 1.2px; color: var(--emerald-600);
+        font-size: .8rem; font-weight: 800; text-transform: uppercase;
+        letter-spacing: 1.2px; color: var(--brand-600);
         display: inline-flex; align-items: center; gap: 8px; margin-top: auto;
-        transition: gap .3s;
+        transition: gap .3s, color .2s;
     }
-    .pillar-link:hover { gap: 14px; color: var(--emerald-500); }
+    .pillar-link:hover { gap: 14px; color: var(--brand-500); }
 
     /* ═══ GALLERY WITH 3D TILT ═══ */
     .gallery-grid {
@@ -478,14 +550,15 @@
     }
     .gallery-card {
         background: #fff; border-radius: var(--radius-md); overflow: hidden;
-        border: 1px solid rgba(0,0,0,0.06); box-shadow: var(--shadow-sm);
+        border: 1.5px solid rgba(247, 16, 137, 0.12);
+        box-shadow: 0 10px 30px rgba(247, 16, 137, 0.05), 0 2px 8px rgba(0,0,0,0.03);
         cursor: pointer; position: relative;
         transition: box-shadow .4s, border-color .4s;
         transform-style: preserve-3d; perspective: 800px;
     }
     .gallery-card:hover {
-        box-shadow: 0 30px 70px rgba(0,0,0,0.15);
-        border-color: rgba(20,152,101,0.25);
+        box-shadow: 0 24px 60px rgba(247, 16, 137, 0.16);
+        border-color: rgba(247, 16, 137, 0.4);
     }
     .gallery-card-inner {
         transition: transform .1s ease-out;
@@ -493,56 +566,60 @@
     }
     .gallery-card-thumb {
         position: relative; aspect-ratio: 1;
-        overflow: hidden; background: #000;
+        overflow: hidden; background: #120a16;
     }
     .gallery-card-thumb img {
         width: 100%; height: 100%; object-fit: cover;
         transition: transform .7s cubic-bezier(.4,0,.2,1);
     }
     .gallery-card:hover .gallery-card-thumb img {
-        transform: scale(1.08);
+        transform: scale(1.06);
     }
     .gallery-card-glare {
         position: absolute; inset: 0;
         background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%),
-            rgba(255,255,255,0.12) 0%, transparent 60%);
+            rgba(255,255,255,0.2) 0%, transparent 60%);
         pointer-events: none; opacity: 0; transition: opacity .3s;
     }
     .gallery-card:hover .gallery-card-glare { opacity: 1; }
     .gallery-card-badge {
         position: absolute; top: 16px; left: 16px; z-index: 2;
-        background: rgba(7,18,12,0.82); backdrop-filter: blur(8px);
-        color: var(--emerald-300); font-size: .68rem; font-weight: 800;
+        background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px);
+        color: var(--brand-600); font-size: .7rem; font-weight: 800;
         text-transform: uppercase; letter-spacing: 1.2px;
         padding: 5px 14px; border-radius: 30px;
-        border: 1px solid rgba(71,211,153,0.25);
+        border: 1px solid rgba(247, 16, 137, 0.25);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
     .gallery-card-overlay {
         position: absolute; inset: 0; z-index: 1;
-        background: linear-gradient(to top, rgba(7,18,12,0.92) 0%, rgba(7,18,12,0.3) 50%, transparent 100%);
+        background: linear-gradient(to top, rgba(18,10,22,0.92) 0%, rgba(18,10,22,0.3) 50%, transparent 100%);
         opacity: 0; transition: opacity .4s ease;
         display: flex; flex-direction: column; justify-content: flex-end; padding: 26px; color: white;
     }
     .gallery-card:hover .gallery-card-overlay { opacity: 1; }
     .gallery-card-meta {
         padding: 22px; background: white;
-        border-top: 1px solid rgba(0,0,0,0.04);
+        border-top: 1px solid rgba(247, 16, 137, 0.08);
     }
     .gallery-card-headline {
-        font-family: var(--font-headline); font-size: 1.1rem;
+        font-family: var(--font-headline); font-size: 1.15rem;
         color: var(--charcoal); text-transform: uppercase;
         line-height: 1.2; margin-bottom: 8px;
     }
     .gallery-card-sub {
-        font-size: .84rem; color: var(--text-muted); line-height: 1.55;
+        font-size: .86rem; color: var(--text-muted); line-height: 1.55;
         display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
         overflow: hidden;
     }
     .btn-view-card {
         margin-top: 14px; display: inline-flex; align-items: center; gap: 6px;
-        font-size: .74rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
-        color: var(--emerald-600); background: var(--emerald-50);
-        padding: 6px 16px; border-radius: 20px;
+        font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
+        color: var(--brand-600); background: var(--brand-50);
+        padding: 6px 16px; border-radius: 20px; transition: all .2s;
+    }
+    .btn-view-card:hover {
+        background: var(--brand-500); color: white;
     }
 
     /* ═══ LIGHTBOX ═══ */
@@ -551,20 +628,20 @@
         display: flex; align-items: center; justify-content: center; padding: 20px;
     }
     .lightbox-bg {
-        position: absolute; inset: 0; background: rgba(5,12,8,0.94);
+        position: absolute; inset: 0; background: rgba(12, 6, 15, 0.94);
         backdrop-filter: blur(20px);
     }
     .lightbox-card {
         position: relative; z-index: 2; background: var(--dark-surface);
         border-radius: var(--radius-lg); overflow: hidden;
-        max-width: 960px; width: 100%;
-        border: 1px solid rgba(255,255,255,0.1);
-        box-shadow: 0 50px 140px rgba(0,0,0,0.8);
+        max-width: 980px; width: 100%;
+        border: 1px solid rgba(247, 16, 137, 0.25);
+        box-shadow: 0 50px 140px rgba(0,0,0,0.85);
         display: grid; grid-template-columns: 1.1fr 1fr;
     }
     .lightbox-media {
         background: #000; display: flex; align-items: center; justify-content: center;
-        min-height: 380px;
+        min-height: 400px;
     }
     .lightbox-img { width: 100%; height: 100%; object-fit: contain; max-height: 75vh; }
     .lightbox-info {
@@ -573,32 +650,32 @@
         overflow-y: auto; max-height: 75vh;
     }
     .lightbox-tag {
-        display: inline-block; background: rgba(71,211,153,0.12);
-        color: var(--emerald-300); font-size: .72rem; font-weight: 800;
+        display: inline-block; background: rgba(247, 16, 137, 0.16);
+        color: #ff60be; font-size: .74rem; font-weight: 800;
         text-transform: uppercase; letter-spacing: 2px;
         padding: 5px 14px; border-radius: 30px; margin-bottom: 18px;
-        border: 1px solid rgba(71,211,153,0.25);
+        border: 1px solid rgba(247, 16, 137, 0.3);
     }
     .lightbox-title {
         font-family: var(--font-headline); font-size: 1.8rem; line-height: 1.1;
         text-transform: uppercase; margin-bottom: 16px;
     }
     .lightbox-body-text {
-        font-size: .94rem; color: rgba(255,255,255,0.75);
+        font-size: .95rem; color: rgba(255,255,255,0.8);
         line-height: 1.75; margin-bottom: 28px;
     }
     .lightbox-cta-box {
-        background: rgba(255,255,255,0.03);
-        border: 1px solid rgba(255,255,255,0.07);
+        background: rgba(247, 16, 137, 0.08);
+        border: 1px solid rgba(247, 16, 137, 0.25);
         padding: 18px 22px; border-radius: var(--radius-sm); margin-bottom: 28px;
     }
     .lightbox-cta-text {
-        font-family: var(--font-headline); font-size: 1.05rem;
-        color: var(--emerald-300); letter-spacing: 1px; text-transform: uppercase;
+        font-family: var(--font-headline); font-size: 1.1rem;
+        color: #ff60be; letter-spacing: 1px; text-transform: uppercase;
     }
     .lightbox-share-title {
-        font-size: .72rem; font-weight: 800; text-transform: uppercase;
-        letter-spacing: 2px; color: rgba(255,255,255,0.5); margin-bottom: 14px;
+        font-size: .74rem; font-weight: 800; text-transform: uppercase;
+        letter-spacing: 2px; color: rgba(255,255,255,0.6); margin-bottom: 14px;
     }
     .lightbox-actions { display: flex; flex-wrap: wrap; gap: 10px; }
     .lb-btn {
@@ -609,141 +686,174 @@
     }
     .lb-btn:hover { transform: translateY(-2px); }
     .lb-btn-wa { background: #25d366; }
-    .lb-btn-x { background: #000; border: 1px solid rgba(255,255,255,0.15); }
+    .lb-btn-x { background: #000; border: 1px solid rgba(255,255,255,0.2); }
     .lb-btn-fb { background: #1877f2; }
-    .lb-btn-dl { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); }
+    .lb-btn-dl { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); }
     .lightbox-close {
         position: absolute; top: 18px; right: 18px; z-index: 10;
-        background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1);
+        background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
         color: white; width: 40px; height: 40px; border-radius: 50%;
         font-size: 1rem; cursor: pointer;
         display: flex; align-items: center; justify-content: center;
         transition: all .2s;
     }
-    .lightbox-close:hover { background: rgba(255,255,255,0.2); }
+    .lightbox-close:hover { background: rgba(255,255,255,0.25); }
 
-    /* ═══ PETITION ═══ */
+    /* ═══ ACTION CENTER / PETITION ═══ */
     .petition-section {
-        background: var(--dark-bg); color: white;
-        padding: 120px 0; position: relative; overflow: hidden;
+        background: linear-gradient(180deg, #fcfbfe 0%, #fff0f7 50%, #fcfbfe 100%);
+        color: var(--charcoal); padding: 120px 0; position: relative; overflow: hidden;
     }
     .petition-section::before {
         content: ''; position: absolute; top: 0; left: 0; right: 0;
         height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(71,211,153,0.25), transparent);
+        background: linear-gradient(90deg, transparent, rgba(247,16,137,0.25), transparent);
     }
     .petition-card {
-        background: rgba(255,255,255,0.03);
-        border: 1px solid rgba(255,255,255,0.08);
+        background: #ffffff;
+        border: 1.5px solid rgba(247, 16, 137, 0.2);
         border-radius: var(--radius-lg); padding: 52px 44px;
-        max-width: 720px; margin: 0 auto;
-        box-shadow: 0 30px 90px rgba(0,0,0,0.5);
+        max-width: 740px; margin: 0 auto;
+        box-shadow: 0 24px 64px rgba(247, 16, 137, 0.1);
         position: relative;
     }
     .petition-card::before {
         content: ''; position: absolute; top: -1px; left: 20%; right: 20%;
-        height: 2px; background: linear-gradient(90deg, transparent, var(--emerald-400), transparent);
+        height: 3px; background: linear-gradient(90deg, transparent, var(--brand-500), transparent);
         border-radius: 2px;
     }
-    .form-input-dark {
+    .form-input-clean {
         width: 100%; padding: 16px 20px;
-        background: rgba(255,255,255,0.05);
-        border: 1.5px solid rgba(255,255,255,0.1);
+        background: #fafafc;
+        border: 1.5px solid rgba(0,0,0,0.1);
         border-radius: 14px; font-family: var(--font-body);
-        font-size: .95rem; color: white; outline: none;
+        font-size: .95rem; color: var(--charcoal); outline: none;
         transition: border-color .3s, box-shadow .3s, background .3s;
     }
-    .form-input-dark:focus {
-        border-color: var(--emerald-400);
-        box-shadow: 0 0 0 3px rgba(71,211,153,0.15);
-        background: rgba(255,255,255,0.07);
+    .form-input-clean:focus {
+        border-color: var(--brand-500);
+        box-shadow: 0 0 0 3px rgba(247,16,137,0.15);
+        background: #ffffff;
     }
-    .form-select-dark {
+    .form-select-clean {
         width: 100%; padding: 16px 20px;
-        background: rgba(255,255,255,0.05);
-        border: 1.5px solid rgba(255,255,255,0.1);
+        background: #fafafc;
+        border: 1.5px solid rgba(0,0,0,0.1);
         border-radius: 14px; font-family: var(--font-body);
-        font-size: .95rem; color: white; outline: none;
+        font-size: .95rem; color: var(--charcoal); outline: none;
         transition: border-color .3s, box-shadow .3s;
     }
-    .form-select-dark:focus {
-        border-color: var(--emerald-400);
-        box-shadow: 0 0 0 3px rgba(71,211,153,0.15);
+    .form-select-clean:focus {
+        border-color: var(--brand-500);
+        box-shadow: 0 0 0 3px rgba(247,16,137,0.15);
     }
-    .form-select-dark option { background: var(--dark-card); color: white; }
     .btn-petition-submit {
         width: 100%; padding: 20px;
-        background: linear-gradient(135deg, var(--emerald-400), var(--emerald-600));
-        color: var(--dark-bg); border: none; border-radius: 16px;
-        font-family: var(--font-headline); font-size: 1.15rem;
+        background: linear-gradient(135deg, #ff2a9d 0%, #f71089 100%);
+        color: white; border: none; border-radius: 16px;
+        font-family: var(--font-headline); font-size: 1.2rem;
         text-transform: uppercase; letter-spacing: 2px;
         cursor: pointer; transition: all .3s ease;
-        box-shadow: 0 8px 32px rgba(71,211,153,0.3);
+        box-shadow: 0 8px 32px rgba(247,16,137,0.35);
         position: relative; overflow: hidden;
-    }
-    .btn-petition-submit::after {
-        content: ''; position: absolute; inset: 0;
-        background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
-        opacity: 0; transition: opacity .3s;
     }
     .btn-petition-submit:hover {
         transform: translateY(-3px);
-        box-shadow: 0 16px 48px rgba(71,211,153,0.45);
+        box-shadow: 0 16px 48px rgba(247,16,137,0.5);
     }
-    .btn-petition-submit:hover::after { opacity: 1; }
 
     /* ═══ FOOTER ═══ */
     footer.site-footer {
         position: relative; padding: 110px 0 52px;
-        background: #050b07; color: white; overflow: hidden;
+        background: #100814; color: white; overflow: hidden;
+        border-top: 1px solid rgba(247, 16, 137, 0.15);
     }
     .footer-orb { position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none; }
-    .footer-orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(71,211,153,0.1), transparent 70%); top: -150px; left: -100px; }
-    .footer-orb-2 { width: 450px; height: 450px; background: radial-gradient(circle, rgba(20,152,101,0.1), transparent 70%); bottom: -150px; right: -80px; }
+    .footer-orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(247,16,137,0.12), transparent 70%); top: -150px; left: -100px; }
+    .footer-orb-2 { width: 450px; height: 450px; background: radial-gradient(circle, rgba(255,42,157,0.1), transparent 70%); bottom: -150px; right: -80px; }
+
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+    }
+    .footer-logo-brand { display: block; margin-bottom: 22px; }
+    .footer-logo-img {
+        height: 76px; width: auto; display: block;
+        filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3));
+    }
+    .footer-mission-text {
+        color: rgba(255,255,255,0.7); font-size: .95rem; line-height: 1.75;
+        max-width: 400px; margin-bottom: 16px;
+    }
+    .footer-cta-tagline {
+        font-family: var(--font-headline); font-size: 1.05rem;
+        color: #ff60be; letter-spacing: 1px; text-transform: uppercase;
+        margin-bottom: 24px;
+    }
+    .footer-col-title {
+        font-size: .74rem; font-weight: 900; text-transform: uppercase;
+        letter-spacing: 3px; color: #ff60be; margin-bottom: 20px;
+    }
+    .footer-link {
+        display: block; color: rgba(255,255,255,0.65); font-size: .9rem;
+        padding: 5px 0; transition: color .2s, transform .2s;
+    }
+    .footer-link:hover { color: white; transform: translateX(3px); }
+    .footer-bottom {
+        margin-top: 72px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08);
+        display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
+        gap: 12px; font-size: .84rem; color: rgba(255,255,255,0.45);
+    }
 
     /* ═══ RESPONSIVE ═══ */
     @media (max-width: 900px) {
         .lightbox-card { grid-template-columns: 1fr; max-height: 90vh; }
         .lightbox-info { padding: 24px; }
         .lightbox-media { min-height: 240px; max-height: 40vh; }
+        .footer-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
         .nav-links { display: none; }
+        .md-toggle { display: block !important; }
         .hero-title { font-size: 2.8rem; letter-spacing: 0; }
+        .hero-cta-tagline { font-size: .95rem; padding: 8px 18px; }
         .petition-card { padding: 32px 20px; }
         .narrative-wrap { padding: 40px 24px; }
-        body { cursor: auto; }
-        .cursor-dot, .cursor-ring, .cursor-label { display: none; }
-        #webgl-canvas { opacity: 0.15; }
+        .footer-grid { grid-template-columns: 1fr; }
+        #webgl-canvas { opacity: 0.2; }
     }
     </style>
 </head>
 
 <body>
 
-<!-- Custom Cursor -->
-<div class="cursor-dot"></div>
-<div class="cursor-ring"></div>
-<div class="cursor-label"></div>
-
 <!-- Three.js WebGL Background Canvas -->
 <canvas id="webgl-canvas"></canvas>
 
-<!-- ═══ CINEMATIC PRELOADER ═══ -->
+<!-- ═══ PRELOADER ═══ -->
 <div id="preloader">
-    <div class="preloader-text" id="preloader-text"></div>
+    <div class="preloader-text" id="preloader-text">
+        <span class="preloader-char">U</span>
+        <span class="preloader-char">N</span>
+        <span class="preloader-char">F</span>
+        <span class="preloader-char">I</span>
+        <span class="preloader-char">N</span>
+        <span class="preloader-char">I</span>
+        <span class="preloader-char">S</span>
+        <span class="preloader-char">H</span>
+        <span class="preloader-char">E</span>
+        <span class="preloader-char">D</span>
+    </div>
     <div class="preloader-bar-track">
         <div class="preloader-bar-fill" id="preloader-bar"></div>
     </div>
-    <div class="preloader-sub" id="preloader-sub">Abortion Law Reform Campaign Nigeria</div>
+    <div class="preloader-sub" id="preloader-sub">Unfinished Dreams • Unfinished Futures</div>
 </div>
 
-<!-- ═══ HEADER ═══ -->
+<!-- ═══ HEADER / NAVIGATION ═══ -->
 <header class="site-header" x-data="{ mobileOpen: false }">
     <div class="header-inner">
         <a href="/" class="logo-brand">
-            <span class="logo-text">unfinished</span>
-            <span class="logo-dot"></span>
+            <img src="{{ asset('themes/nigeria/img/logos/logo-nav-horizontal.webp') }}" alt="UNFINISHED — Dreams • Futures • Care" class="nav-logo-img">
         </a>
 
         <nav class="nav-links">
@@ -753,25 +863,25 @@
             <a href="#gallery" class="nav-link">Campaign Cards</a>
             <a href="#petition" class="nav-link">Petition</a>
             <a href="/stories" class="nav-link">Stories</a>
-            <a href="/admin" class="nav-link" style="color:var(--emerald-400);">Admin</a>
+            <a href="/admin" class="nav-link" style="color:var(--brand-500);">Admin</a>
             <a href="#petition" class="btn-nav-petition magnetic-wrap" style="margin-left:8px;">Sign Petition</a>
         </nav>
 
-        <button @click="mobileOpen = !mobileOpen" style="display:none;background:none;border:none;cursor:pointer;padding:8px;color:white;" class="md-toggle" aria-label="Menu">
+        <button @click="mobileOpen = !mobileOpen" style="display:none;background:none;border:none;cursor:pointer;padding:8px;color:#1e293b;" class="md-toggle" aria-label="Menu">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
         </button>
     </div>
-    <div x-show="mobileOpen" x-transition style="background:var(--dark-surface);border-top:1px solid rgba(255,255,255,0.08);padding:24px 28px;display:flex;flex-direction:column;gap:10px;">
-        <a href="#about" @click="mobileOpen=false" style="padding:12px 0;font-size:.92rem;font-weight:700;color:white;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid rgba(255,255,255,0.06);">About</a>
-        <a href="#pillars" @click="mobileOpen=false" style="padding:12px 0;font-size:.92rem;font-weight:700;color:white;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid rgba(255,255,255,0.06);">The 4 Pillars</a>
-        <a href="#stats" @click="mobileOpen=false" style="padding:12px 0;font-size:.92rem;font-weight:700;color:white;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid rgba(255,255,255,0.06);">Research Data</a>
-        <a href="#gallery" @click="mobileOpen=false" style="padding:12px 0;font-size:.92rem;font-weight:700;color:white;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid rgba(255,255,255,0.06);">Campaign Cards</a>
-        <a href="#petition" @click="mobileOpen=false" style="padding:12px 0;font-size:.92rem;font-weight:700;color:white;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid rgba(255,255,255,0.06);">Sign Petition</a>
-        <a href="/stories" @click="mobileOpen=false" style="padding:12px 0;font-size:.92rem;font-weight:700;color:white;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid rgba(255,255,255,0.06);">Stories</a>
-        <a href="/admin" @click="mobileOpen=false" style="padding:12px 0;font-size:.92rem;font-weight:700;color:white;text-transform:uppercase;letter-spacing:1px;">Admin Portal</a>
+    <div x-show="mobileOpen" x-transition class="mobile-drawer">
+        <img src="{{ asset('themes/nigeria/img/logos/logo-nav-horizontal.webp') }}" alt="UNFINISHED" class="mobile-logo-img">
+        <a href="#about" @click="mobileOpen=false" class="mobile-link">About</a>
+        <a href="#pillars" @click="mobileOpen=false" class="mobile-link">The 4 Pillars</a>
+        <a href="#stats" @click="mobileOpen=false" class="mobile-link">Research Data</a>
+        <a href="#gallery" @click="mobileOpen=false" class="mobile-link">Campaign Cards</a>
+        <a href="#petition" @click="mobileOpen=false" class="mobile-link">Sign Petition</a>
+        <a href="/stories" @click="mobileOpen=false" class="mobile-link">Stories</a>
+        <a href="/admin" @click="mobileOpen=false" class="mobile-link" style="color:var(--brand-500);">Admin Portal</a>
     </div>
 </header>
-<style>@media (max-width:768px) { .md-toggle { display:block !important; } }</style>
 
 <!-- ═══ HERO ═══ -->
 <section id="home" class="hero-wrap">
@@ -786,37 +896,44 @@
         <div class="hero-inner">
             <div class="hero-badge" id="hero-badge">
                 <span class="hero-badge-pulse"></span>
-                <span>Abortion Law Reform Campaign Nigeria</span>
+                <span>UNFINISHED • PREVENTING MATERNAL MORTALITY</span>
             </div>
 
             <h1 class="hero-title reveal-text" id="hero-title">
-                Because Every Woman's Life<br>
-                <span class="highlight">Is Still Being Written.</span>
+                Unfinished Dreams.<br>
+                <span class="highlight">Unfinished Futures.</span>
             </h1>
 
             <p class="hero-sub" id="hero-sub">
-                Nigeria has made measurable progress reducing maternal deaths from haemorrhage and hypertension. Extending that same commitment to clear, safe abortion care isn't a departure — it completes the legal framework to save lives.
+                Across Nigeria, every woman lost to preventable pregnancy complications leaves behind a name, a family, and a life still being written. Outdated legal frameworks must not stand between Nigerian women and timely healthcare.
             </p>
 
-            <div class="hero-btns" id="hero-btns" style="opacity:0;transform:translateY(30px);">
-                <div class="magnetic-wrap">
-                    <a href="#petition" class="btn-hero-primary" data-cursor="SIGN">
-                        <span>Sign The Petition</span>
-                        <span>✍️</span>
-                    </a>
+            <div class="hero-cta-lockup" id="hero-cta-lockup">
+                <div class="hero-cta-tagline">
+                    <span class="cta-dot"></span>
+                    <span>Reform the law. Protect our future. Sign the petition.</span>
                 </div>
-                <div class="magnetic-wrap">
-                    <a href="#gallery" class="btn-hero-secondary" data-cursor="EXPLORE">
-                        <span>Campaign Cards</span>
-                        <span>→</span>
-                    </a>
+
+                <div class="hero-btns" id="hero-btns">
+                    <div class="magnetic-wrap">
+                        <a href="#petition" class="btn-hero-primary" data-cursor="SIGN">
+                            <span>Sign The Petition</span>
+                            <span>✍️</span>
+                        </a>
+                    </div>
+                    <div class="magnetic-wrap">
+                        <a href="#gallery" class="btn-hero-secondary" data-cursor="EXPLORE">
+                            <span>Campaign Visuals</span>
+                            <span>→</span>
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <div class="hero-evidence" id="hero-evidence">
-                <span style="color:var(--emerald-400);font-weight:800;">✓ EVIDENCE-BASED</span>
+                <span style="color:var(--brand-400);font-weight:800;">✓ EVIDENCE-BASED</span>
                 <span style="opacity:0.4;">•</span>
-                <span>Protecting Women, Healthcare Workers & Families</span>
+                <span>Protecting Women, Healthcare Workers & Families Across Nigeria</span>
             </div>
         </div>
     </div>
@@ -830,38 +947,38 @@
 <!-- ═══ MARQUEE TICKER ═══ -->
 <div class="marquee-wrap">
     <div class="marquee-track">
-        <div class="marquee-item">Finish the law<span class="marquee-dot"></span>Protect her future<span class="marquee-dot"></span>Sign the petition<span class="marquee-dot"></span>Every woman's life is still being written<span class="marquee-dot"></span>610,000 women seeking care<span class="marquee-dot"></span>Finish the law<span class="marquee-dot"></span>Protect her future<span class="marquee-dot"></span>Sign the petition<span class="marquee-dot"></span>Every woman's life is still being written<span class="marquee-dot"></span>610,000 women seeking care<span class="marquee-dot"></span></div>
-        <div class="marquee-item">Finish the law<span class="marquee-dot"></span>Protect her future<span class="marquee-dot"></span>Sign the petition<span class="marquee-dot"></span>Every woman's life is still being written<span class="marquee-dot"></span>610,000 women seeking care<span class="marquee-dot"></span>Finish the law<span class="marquee-dot"></span>Protect her future<span class="marquee-dot"></span>Sign the petition<span class="marquee-dot"></span>Every woman's life is still being written<span class="marquee-dot"></span>610,000 women seeking care<span class="marquee-dot"></span></div>
+        <div class="marquee-item">Unfinished Dreams<span class="marquee-dot"></span>Unfinished Futures<span class="marquee-dot"></span>Reform the law<span class="marquee-dot"></span>Protect our future<span class="marquee-dot"></span>Sign the petition<span class="marquee-dot"></span>610,000 women seeking care<span class="marquee-dot"></span>Unfinished Dreams<span class="marquee-dot"></span>Unfinished Futures<span class="marquee-dot"></span>Reform the law<span class="marquee-dot"></span>Protect our future<span class="marquee-dot"></span>Sign the petition<span class="marquee-dot"></span></div>
+        <div class="marquee-item">Unfinished Dreams<span class="marquee-dot"></span>Unfinished Futures<span class="marquee-dot"></span>Reform the law<span class="marquee-dot"></span>Protect our future<span class="marquee-dot"></span>Sign the petition<span class="marquee-dot"></span>610,000 women seeking care<span class="marquee-dot"></span>Unfinished Dreams<span class="marquee-dot"></span>Unfinished Futures<span class="marquee-dot"></span>Reform the law<span class="marquee-dot"></span>Protect our future<span class="marquee-dot"></span>Sign the petition<span class="marquee-dot"></span></div>
     </div>
 </div>
 
 <!-- ═══ ABOUT / NARRATIVE ═══ -->
-<section id="about" class="section-padding" style="background:var(--cream);">
+<section id="about" class="section-padding" style="background:var(--canvas-bg);">
     <div class="section-container">
         <div class="narrative-wrap">
             <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:center;">
                 <div>
-                    <div class="section-label" style="color:var(--emerald-400);">
+                    <div class="section-label">
                         <span class="section-line"></span>The Campaign Mission
                     </div>
                     <h2 class="narrative-quote reveal-text">
                         A Law Should Never Arrive Too Late.
                     </h2>
-                    <p style="font-size:1.02rem;color:rgba(255,255,255,0.82);line-height:1.8;margin-bottom:22px;" class="fade-up">
+                    <p style="font-size:1.05rem;color:#334155;line-height:1.8;margin-bottom:22px;" class="fade-up">
                         When a woman faces a severe pregnancy complication, minutes matter. Today in Nigeria, healthcare providers are trained and ready to save her, but narrow, colonial-era laws leave doctors uncertain and without clear legal grounds to intervene.
                     </p>
-                    <p style="font-size:.98rem;color:rgba(255,255,255,0.7);line-height:1.8;margin-bottom:32px;" class="fade-up">
-                        <strong style="color:rgba(255,255,255,0.9);">Completing the legal framework does not abandon Nigeria's commitment to protecting life.</strong> It strengthens the country's ability to prevent deaths by keeping women inside safe, regulated healthcare systems.
+                    <p style="font-size:1rem;color:#475569;line-height:1.8;margin-bottom:32px;" class="fade-up">
+                        <strong style="color:#0f172a;">Completing the legal framework does not abandon Nigeria's commitment to protecting life.</strong> It strengthens the country's ability to prevent deaths by keeping women inside safe, regulated healthcare systems.
                     </p>
                     <div class="magnetic-wrap fade-up">
-                        <a href="#pillars" class="btn-hero-primary" style="padding:14px 34px;font-size:.8rem;" data-cursor="LEARN">
+                        <a href="#pillars" class="btn-hero-primary" style="padding:14px 34px;font-size:.84rem;" data-cursor="LEARN">
                             Learn How Reform Protects Women →
                         </a>
                     </div>
                 </div>
 
                 <div class="narrative-img-wrap parallax-img">
-                    <img src="{{ asset('themes/nigeria/social_gallery/poster-1.jpg') }}" alt="She is more than a maternal death statistic">
+                    <img src="{{ asset('themes/nigeria/social_gallery/unfinished-preventing-maternal-mortality-1.jpg') }}" alt="She Had A Life">
                 </div>
             </div>
         </div>
@@ -872,35 +989,35 @@
 <div style="padding:0 36px;"><div class="divider-line" style="max-width:1380px;margin:0 auto;"></div></div>
 
 <!-- ═══ STATS ═══ -->
-<section id="stats" class="stats-dark-wrap">
+<section id="stats" class="stats-section">
     <div class="section-container">
         <div style="text-align:center;margin-bottom:72px;">
-            <div class="section-label" style="justify-content:center;color:var(--emerald-400);">
+            <div class="section-label" style="justify-content:center;">
                 <span class="section-line"></span>Verified Healthcare Data<span class="section-line"></span>
             </div>
-            <h2 class="section-title reveal-text" style="color:white;text-align:center;">The Cost of Unfinished Law</h2>
-            <p class="section-subtitle fade-up" style="margin:0 auto;color:rgba(255,255,255,0.6);">
+            <h2 class="section-title reveal-text" style="text-align:center;">The Cost of Unfinished Law</h2>
+            <p class="section-subtitle fade-up" style="margin:0 auto;">
                 Evidence from the Guttmacher Institute & maternal healthcare research in Nigeria demonstrates the urgent need for clear legal pathways.
             </p>
         </div>
 
         <div class="stats-grid">
-            <div class="stat-card-dark">
+            <div class="stat-card-alive card-reveal">
                 <div class="stat-big-number" data-count="610000" data-suffix="" data-prefix="">0</div>
                 <h4 class="stat-heading">Women Seeking Care Yearly</h4>
                 <p class="stat-desc">Estimated Nigerian women who seek abortion care each year. Without legal clarity, care is forced underground.</p>
             </div>
-            <div class="stat-card-dark">
+            <div class="stat-card-alive card-reveal">
                 <div class="stat-big-number" data-count="1" data-suffix=" in 8" data-prefix="">0</div>
                 <h4 class="stat-heading">Maternal Deaths in Nigeria</h4>
                 <p class="stat-desc">Maternal deaths caused by unsafe abortion complications — lives that skilled healthcare providers could save.</p>
             </div>
-            <div class="stat-card-dark">
+            <div class="stat-card-alive card-reveal">
                 <div class="stat-big-number" data-count="285000" data-suffix="" data-prefix="">0</div>
                 <h4 class="stat-heading">Untreated Complications</h4>
                 <p class="stat-desc">Women each year suffering severe, life-altering complications without receiving prompt medical treatment.</p>
             </div>
-            <div class="stat-card-dark">
+            <div class="stat-card-alive card-reveal">
                 <div class="stat-big-number" data-count="3000" data-suffix="+" data-prefix="">0</div>
                 <h4 class="stat-heading">Preventable Deaths Annually</h4>
                 <p class="stat-desc">Annual preventable deaths of Nigerian mothers, daughters, and sisters — losses that timely healthcare would prevent.</p>
@@ -910,7 +1027,7 @@
 </section>
 
 <!-- ═══ 4 PILLARS ═══ -->
-<section id="pillars" class="section-padding" style="background:var(--warm-white);">
+<section id="pillars" class="section-padding" style="background:#ffffff;">
     <div class="section-container">
         <div style="text-align:center;margin-bottom:72px;">
             <div class="section-label" style="justify-content:center;">
@@ -964,27 +1081,99 @@
 
 @php
     $campaignCards = [
-        ['id'=>1, 'tag'=>'Maternal Health & Lives', 'title'=>'SHE IS MORE THAN A MATERNAL DEATH STATISTIC', 'quote'=>'She is a woman with a life, a family, a livelihood and a future. Every preventable cause must count.', 'image'=>'poster-1.jpg', 'downloadName'=>'unfinished-poster-1.jpg'],
-        ['id'=>2, 'tag'=>'Legal Framework', 'title'=>'FINISH THE LAW', 'quote'=>"Completing the legal framework does not abandon Nigeria\u2019s commitment to protecting life. It strengthens the country\u2019s ability to prevent deaths.", 'image'=>'poster-2.jpg', 'downloadName'=>'unfinished-poster-2.jpg'],
-        ['id'=>3, 'tag'=>'Timely Care', 'title'=>'DELAYED CARE TURNS TREATABLE COMPLICATIONS FATAL', 'quote'=>'Delayed care can turn a treatable complication into a preventable maternal death. A law should never arrive too late.', 'image'=>'poster-3.jpg', 'downloadName'=>'unfinished-poster-3.jpg'],
-        ['id'=>4, 'tag'=>'National Health Targets', 'title'=>'NIGERIA COUNTS EVERY MATERNAL DEATH. IT SHOULD ADDRESS EVERY CAUSE.', 'quote'=>'Nigeria cannot reach its maternal health targets while unsafe abortion is left unaddressed.', 'image'=>'poster-4.jpg', 'downloadName'=>'unfinished-poster-4.jpg'],
-        ['id'=>5, 'tag'=>'Regulated Healthcare', 'title'=>'A LAW SHOULD NEVER ARRIVE TOO LATE', 'quote'=>'Addressing unsafe abortion means keeping women inside safe, regulated healthcare systems.', 'image'=>'poster-5.jpg', 'downloadName'=>'unfinished-poster-5.jpg'],
-        ['id'=>6, 'tag'=>'Healthcare Workers', 'title'=>'TRAINED TO SAVE HER. WAITING FOR THE LAW TO LET HER.', 'quote'=>'The law today permits care in only a narrow set of circumstances, which leaves providers without grounds to act in others.', 'image'=>'poster-6.jpg', 'downloadName'=>'unfinished-poster-6.jpg'],
-        ['id'=>7, 'tag'=>'Judicial & Statutory Reform', 'title'=>'THE COURTS HAVE MOVED. THE LAW HAS NOT.', 'quote'=>"Completing the legal framework does not abandon Nigeria\u2019s commitment to protecting life. It strengthens the country\u2019s ability to prevent deaths.", 'image'=>'poster-7.jpg', 'downloadName'=>'unfinished-poster-7.jpg'],
-        ['id'=>8, 'tag'=>'Penal & Criminal Codes', 'title'=>"AMEND THE CODES TO PROTECT WOMEN\u2019S HEALTH", 'quote'=>"The Criminal and Penal Codes should be amended to permit healthcare providers to provide abortion care in additional circumstances, in line with women\u2019s health needs.", 'image'=>'poster-8.jpg', 'downloadName'=>'unfinished-poster-8.jpg'],
-        ['id'=>9, 'tag'=>'Preventable Mortality', 'title'=>'EVERY CAUSE OF MATERNAL DEATH IS PREVENTABLE', 'quote'=>'Haemorrhage, hypertension, infection, delivery complications and unsafe abortion all contribute to maternal mortality in Nigeria.', 'image'=>'poster-9.jpg', 'downloadName'=>'unfinished-poster-9.jpg'],
+        [
+            'id' => 1,
+            'tag' => 'Maternal Health & Lives',
+            'title' => 'SHE HAD A LIFE...',
+            'quote' => 'She had dreams, a family and a future lost to preventable pregnancy complications.',
+            'image' => 'unfinished-preventing-maternal-mortality-1.jpg',
+            'downloadName' => 'Unfinished — Preventing Maternal Mortality - She had a life.jpg'
+        ],
+        [
+            'id' => 2,
+            'tag' => 'Daughters, Sisters & Mothers',
+            'title' => 'DAUGHTERS, SISTERS, MOTHERS AND FRIENDS',
+            'quote' => 'Each one had a name — but their dreams, plans and futures left unfinished.',
+            'image' => 'unfinished-preventing-maternal-mortality-2.jpg',
+            'downloadName' => 'Unfinished — Preventing Maternal Mortality - Daughters sisters mothers.jpg'
+        ],
+        [
+            'id' => 3,
+            'tag' => 'Counted In Data',
+            'title' => 'COUNTED IN DATA. MISSED IN LIFE.',
+            'quote' => 'They were daughters, sisters, mothers, friends — futures left unfinished.',
+            'image' => 'unfinished-preventing-maternal-mortality-3.jpg',
+            'downloadName' => 'Unfinished — Preventing Maternal Mortality - Counted in data.jpg'
+        ],
+        [
+            'id' => 4,
+            'tag' => 'Healthcare Workers',
+            'title' => 'TRAINED TO SAVE HER. WAITING FOR PERMISSION FROM THE LAW.',
+            'quote' => 'Delayed care can turn treatable maternal complications fatal.',
+            'image' => 'unfinished-preventing-maternal-mortality-4.jpg',
+            'downloadName' => 'Unfinished — Preventing Maternal Mortality - Trained to save her.jpg'
+        ],
+        [
+            'id' => 5,
+            'tag' => 'Regulated Healthcare',
+            'title' => 'A LAW SHOULD NOT ARRIVE TOO LATE.',
+            'quote' => 'Addressing unsafe abortion means keeping women inside safe, regulated healthcare systems.',
+            'image' => 'unfinished-preventing-maternal-mortality-5.jpg',
+            'downloadName' => 'Unfinished — Preventing Maternal Mortality - A law should not arrive too late.jpg'
+        ],
+        [
+            'id' => 6,
+            'tag' => 'Scales of Justice',
+            'title' => 'REFORM THE LAW.',
+            'quote' => 'Balance the scales of justice. The criminal and penal code should be expanded to allow additional grounds in line with lived realities.',
+            'image' => 'unfinished-preventing-maternal-mortality-6.jpg',
+            'downloadName' => 'Unfinished — Preventing Maternal Mortality - Balance the scales of justice.jpg'
+        ],
+        [
+            'id' => 7,
+            'tag' => 'Judicial & Statutory Reform',
+            'title' => 'THE COURTS HAVE MOVED. THE LAW HAS NOT.',
+            'quote' => 'Completing the legal framework does not abandon Nigeria’s commitment to protecting life. It strengthens the country’s ability to prevent maternal deaths.',
+            'image' => 'unfinished-preventing-maternal-mortality-7.jpg',
+            'downloadName' => 'Unfinished — Preventing Maternal Mortality - The courts have moved.jpg'
+        ],
+        [
+            'id' => 8,
+            'tag' => 'Timely Care',
+            'title' => 'A LAW SHOULD NEVER ARRIVE TOO LATE.',
+            'quote' => 'Delayed care can turn a treatable complication into a preventable maternal death.',
+            'image' => 'unfinished-preventing-maternal-mortality-8.jpg',
+            'downloadName' => 'Unfinished — Preventing Maternal Mortality - A law should never arrive too late.jpg'
+        ],
+        [
+            'id' => 9,
+            'tag' => 'Legal Framework',
+            'title' => 'REFORM THE LAW. COMPLETE THE FRAMEWORK.',
+            'quote' => 'Completing the legal framework does not abandon Nigeria’s commitment to protecting life. It strengthens the country’s ability to prevent maternal deaths.',
+            'image' => 'unfinished-preventing-maternal-mortality-9.jpg',
+            'downloadName' => 'Unfinished — Preventing Maternal Mortality - Reform the law.jpg'
+        ],
+        [
+            'id' => 10,
+            'tag' => 'Faith & Shared Humanity',
+            'title' => 'WE CAN HONOR FAITH AND STILL SAVE LIVES.',
+            'quote' => 'She is a woman with a life, a family, a livelihood and a future. Every preventable cause must be addressed.',
+            'image' => 'unfinished-preventing-maternal-mortality-10.jpg',
+            'downloadName' => 'Unfinished — Preventing Maternal Mortality - Honor faith and save lives.jpg'
+        ],
     ];
 @endphp
 
-<section id="gallery" class="section-padding" style="background:var(--cream);" x-data="campaignGallery()">
+<!-- ═══ CAMPAIGN CARDS GALLERY ═══ -->
+<section id="gallery" class="section-padding" style="background:var(--canvas-bg);" x-data="campaignGallery()">
     <div class="section-container">
         <div style="text-align:center;margin-bottom:72px;">
             <div class="section-label" style="justify-content:center;">
                 <span class="section-line"></span>Amplifying The Message<span class="section-line"></span>
             </div>
-            <h2 class="section-title reveal-text" style="text-align:center;">The 9 Campaign Visuals</h2>
+            <h2 class="section-title reveal-text" style="text-align:center;">The 10 Campaign Visuals</h2>
             <p class="section-subtitle fade-up" style="margin:0 auto;">
-                Explore, download, and share these 9 official campaign graphics across WhatsApp, X, Facebook, and Instagram to build public support across Nigeria.
+                Explore, download, and share these 10 official campaign graphics across WhatsApp, X, Facebook, and Instagram to build public support across Nigeria.
             </p>
         </div>
 
@@ -1025,16 +1214,25 @@
                     <h3 class="lightbox-title" x-text="currentCard?.title"></h3>
                     <p class="lightbox-body-text" x-text="currentCard?.quote"></p>
                     <div class="lightbox-cta-box">
-                        <div class="lightbox-cta-text">"Finish the law. Protect her future. Sign the petition."</div>
+                        <div class="lightbox-cta-text">"Reform the law. Protect our future. Sign the petition."</div>
                     </div>
                 </div>
                 <div>
                     <div class="lightbox-share-title">Share This Message Across Nigeria</div>
                     <div class="lightbox-actions">
-                        <a :href="getWhatsAppUrl()" target="_blank" rel="noopener noreferrer" class="lb-btn lb-btn-wa"><span>&#128172; WhatsApp</span></a>
-                        <a :href="getXUrl()" target="_blank" rel="noopener noreferrer" class="lb-btn lb-btn-x"><span>&#120143; Share</span></a>
-                        <a :href="getFacebookUrl()" target="_blank" rel="noopener noreferrer" class="lb-btn lb-btn-fb"><span>f Facebook</span></a>
-                        <a :href="currentCard?.image" :download="currentCard?.downloadName" class="lb-btn lb-btn-dl"><span>&#11015; Download</span></a>
+                        <button type="button" @click="shareWhatsApp()" class="lb-btn lb-btn-wa">
+                            <span>💬 WhatsApp</span>
+                        </button>
+                        <a :href="getXUrl()" target="_blank" rel="noopener noreferrer" class="lb-btn lb-btn-x">
+                            <span>𝕏 Share</span>
+                        </a>
+                        <a :href="getFacebookUrl()" target="_blank" rel="noopener noreferrer" class="lb-btn lb-btn-fb">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block;vertical-align:-1px;margin-right:6px;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                            <span>Facebook</span>
+                        </a>
+                        <a :href="currentCard?.image" :download="currentCard?.downloadName" class="lb-btn lb-btn-dl">
+                            <span>⬇ Download</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1042,22 +1240,24 @@
     </div>
 </section>
 
-<!-- ═══ PETITION ═══ -->
+<!-- ═══ ACTION CENTER / PETITION ═══ -->
 <section id="petition" class="petition-section">
     <div class="section-container">
         <div style="text-align:center;margin-bottom:48px;">
-            <div class="section-label" style="justify-content:center;color:var(--emerald-400);">
+            <div class="section-label" style="justify-content:center;">
                 <span class="section-line"></span>Action Center<span class="section-line"></span>
             </div>
-            <h2 class="section-title reveal-text" style="color:white;text-align:center;">Sign The Petition For Reform</h2>
-            <p class="section-subtitle fade-up" style="margin:0 auto;color:rgba(255,255,255,0.65);">
-                Stand with healthcare workers, policymakers, and citizens demanding legal clarity to protect women's lives across Nigeria.
+            <h2 class="section-title reveal-text" style="text-align:center;">
+                Reform The Law. Protect Our Future.
+            </h2>
+            <p class="section-subtitle fade-up" style="margin:0 auto;text-align:center;">
+                Sign the petition to ensure no woman's life, dreams, or future are left unfinished. Stand with healthcare workers, policymakers, and families demanding legal clarity across Nigeria.
             </p>
         </div>
 
         <div class="petition-card card-reveal">
             @if(session('success'))
-            <div style="background:var(--emerald-500);color:white;padding:18px 24px;border-radius:14px;margin-bottom:24px;font-weight:800;text-align:center;">
+            <div style="background:var(--brand-500);color:white;padding:18px 24px;border-radius:14px;margin-bottom:24px;font-weight:800;text-align:center;">
                 &#10004; {{ session('success') }}
             </div>
             @endif
@@ -1066,26 +1266,26 @@
                 @csrf
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;">
                     <div>
-                        <label style="display:block;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,0.8);margin-bottom:8px;">Your Name *</label>
-                        <input type="text" name="name" class="form-input-dark" placeholder="e.g. Amina Bello" required value="{{ old('name') }}">
+                        <label style="display:block;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--charcoal);margin-bottom:8px;">Your Name *</label>
+                        <input type="text" name="name" class="form-input-clean" placeholder="e.g. Amina Bello" required value="{{ old('name') }}">
                     </div>
                     <div>
-                        <label style="display:block;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,0.8);margin-bottom:8px;">Email Address *</label>
-                        <input type="email" name="email" class="form-input-dark" placeholder="you@example.com" required value="{{ old('email') }}">
+                        <label style="display:block;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--charcoal);margin-bottom:8px;">Email Address *</label>
+                        <input type="email" name="email" class="form-input-clean" placeholder="you@example.com" required value="{{ old('email') }}">
                     </div>
                 </div>
                 <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:18px;margin-bottom:28px;">
                     <div>
-                        <label style="display:block;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,0.8);margin-bottom:8px;">I Am Signing As</label>
-                        <select name="role" class="form-select-dark">
+                        <label style="display:block;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--charcoal);margin-bottom:8px;">I Am Signing As</label>
+                        <select name="role" class="form-select-clean">
                             <option value="citizen" selected>Citizen / Advocate</option>
                             <option value="healthcare_worker">Healthcare Worker (Doctor / Nurse / Midwife)</option>
                             <option value="policymaker">Policymaker / Legal Professional</option>
                         </select>
                     </div>
                     <div>
-                        <label style="display:block;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,0.8);margin-bottom:8px;">State (Optional)</label>
-                        <input type="text" name="state" class="form-input-dark" placeholder="e.g. Lagos, Abuja, Kano" value="{{ old('state') }}">
+                        <label style="display:block;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--charcoal);margin-bottom:8px;">State (Optional)</label>
+                        <input type="text" name="state" class="form-input-clean" placeholder="e.g. Lagos, Abuja, Kano" value="{{ old('state') }}">
                     </div>
                 </div>
                 <div class="magnetic-wrap" style="display:block;">
@@ -1101,45 +1301,47 @@
     <div class="footer-orb footer-orb-1"></div>
     <div class="footer-orb footer-orb-2"></div>
     <div class="section-container" style="position:relative;z-index:2;">
-        <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;">
+        <div class="footer-grid">
             <div>
-                <a href="/" class="logo-brand" style="margin-bottom:18px;">
-                    <span class="logo-text" style="color:var(--emerald-400);">unfinished</span>
-                    <span class="logo-dot"></span>
+                <a href="/" class="footer-logo-brand">
+                    <img src="{{ asset('themes/nigeria/img/logos/logo-footer-square.webp') }}" alt="UNFINISHED — Dreams • Futures • Care" class="footer-logo-img">
                 </a>
-                <p style="color:rgba(255,255,255,0.6);font-size:.94rem;line-height:1.75;max-width:400px;margin-bottom:24px;">
-                    Amplifying the call to review Nigeria's maternal healthcare and abortion laws so fewer lives and dreams are left unfinished.
+                <p class="footer-mission-text">
+                    Amplifying the call to review Nigeria's maternal healthcare laws so fewer lives, dreams, and futures are left unfinished.
                 </p>
+                <div class="footer-cta-tagline">
+                    "Reform the law. Protect our future. Sign the petition."
+                </div>
             </div>
             <div>
-                <p style="font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:3px;color:var(--emerald-400);margin-bottom:20px;">Navigation</p>
-                <a href="#about" style="display:block;color:rgba(255,255,255,0.6);font-size:.9rem;padding:5px 0;transition:color .2s;">About Campaign</a>
-                <a href="#pillars" style="display:block;color:rgba(255,255,255,0.6);font-size:.9rem;padding:5px 0;transition:color .2s;">The 4 Pillars</a>
-                <a href="#stats" style="display:block;color:rgba(255,255,255,0.6);font-size:.9rem;padding:5px 0;transition:color .2s;">Research Data</a>
-                <a href="#gallery" style="display:block;color:rgba(255,255,255,0.6);font-size:.9rem;padding:5px 0;transition:color .2s;">Campaign Visuals</a>
+                <p class="footer-col-title">Navigation</p>
+                <a href="#about" class="footer-link">About Campaign</a>
+                <a href="#pillars" class="footer-link">The 4 Pillars</a>
+                <a href="#stats" class="footer-link">Research Data</a>
+                <a href="#gallery" class="footer-link">Campaign Visuals</a>
             </div>
             <div>
-                <p style="font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:3px;color:var(--emerald-400);margin-bottom:20px;">Action</p>
-                <a href="#petition" style="display:block;color:rgba(255,255,255,0.6);font-size:.9rem;padding:5px 0;">Sign Petition</a>
-                <a href="/stories/submit" style="display:block;color:rgba(255,255,255,0.6);font-size:.9rem;padding:5px 0;">Share Story</a>
-                <a href="/stories" style="display:block;color:rgba(255,255,255,0.6);font-size:.9rem;padding:5px 0;">Community Stories</a>
-                <a href="/admin" style="display:block;color:rgba(255,255,255,0.6);font-size:.9rem;padding:5px 0;">Admin Portal</a>
+                <p class="footer-col-title">Action</p>
+                <a href="#petition" class="footer-link">Sign Petition</a>
+                <a href="/stories/submit" class="footer-link">Share Story</a>
+                <a href="/stories" class="footer-link">Community Stories</a>
+                <a href="/admin" class="footer-link">Admin Portal</a>
             </div>
             <div>
-                <p style="font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:3px;color:var(--emerald-400);margin-bottom:20px;">Contact</p>
-                <a href="https://wa.me/263773699063" target="_blank" style="display:block;color:rgba(255,255,255,0.6);font-size:.9rem;padding:5px 0;">WhatsApp Campaign Desk</a>
-                <p style="color:rgba(255,255,255,0.35);font-size:.82rem;margin-top:18px;line-height:1.6;">Abuja & Lagos, Nigeria</p>
+                <p class="footer-col-title">Contact</p>
+                <a href="https://wa.me/263773699063" target="_blank" class="footer-link">WhatsApp Campaign Desk</a>
+                <p style="color:rgba(255,255,255,0.4);font-size:.82rem;margin-top:18px;line-height:1.6;">Abuja & Lagos, Nigeria</p>
             </div>
         </div>
-        <div style="margin-top:72px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:.82rem;color:rgba(255,255,255,0.35);">
-            <p>&copy; {{ date('Y') }} unfinished &mdash; Abortion Law Reform Campaign Nigeria.</p>
-            <p>Finish the law. Protect her future. Sign the petition.</p>
+        <div class="footer-bottom">
+            <p>&copy; {{ date('Y') }} UNFINISHED &mdash; Preventing Maternal Mortality.</p>
+            <p>Reform the law. Protect our future. Sign the petition.</p>
         </div>
     </div>
 </footer>
 
 <!-- WhatsApp FAB -->
-<a href="https://wa.me/263773699063?text=I%20want%20to%20support%20the%20Unfinished%20Abortion%20Law%20Reform%20Campaign"
+<a href="https://wa.me/263773699063?text=I%20want%20to%20support%20the%20Unfinished%20Preventing%20Maternal%20Mortality%20Campaign"
    target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" data-cursor="CHAT"
    style="position:fixed;bottom:28px;right:28px;z-index:9000;width:60px;height:60px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 28px rgba(37,211,102,0.45);transition:transform .3s cubic-bezier(.4,0,.2,1);"
    onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
@@ -1159,68 +1361,73 @@ window.lenis = new Lenis({
     duration: 1.2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     orientation: 'vertical',
+    gestureOrientation: 'vertical',
     smoothWheel: true,
 });
-const lenis = window.lenis;
-
 function raf(time) {
-    lenis.raf(time);
+    window.lenis.raf(time);
     requestAnimationFrame(raf);
 }
 requestAnimationFrame(raf);
 
-// Sync Lenis with GSAP ScrollTrigger
-gsap.registerPlugin(ScrollTrigger);
-lenis.on('scroll', ScrollTrigger.update);
-gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+// Link Lenis with GSAP ScrollTrigger
+window.lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add((time) => { window.lenis.raf(time * 1000); });
 gsap.ticker.lagSmoothing(0);
 
 /* ═══════════════════════════════════════════
-   2. CINEMATIC PRELOADER
+   2. PRELOADER ANIMATION SEQUENCE
    ═══════════════════════════════════════════ */
-const preloaderText = document.getElementById('preloader-text');
+const preloader = document.getElementById('preloader');
+const preloaderChars = document.querySelectorAll('.preloader-char');
 const preloaderBar = document.getElementById('preloader-bar');
 const preloaderSub = document.getElementById('preloader-sub');
-const preloader = document.getElementById('preloader');
 
-// Split "UNFINISHED" into chars
-'UNFINISHED'.split('').forEach(char => {
-    const span = document.createElement('span');
-    span.className = 'preloader-char';
-    span.textContent = char;
-    preloaderText.appendChild(span);
+const preloaderTl = gsap.timeline({
+    onComplete: () => {
+        gsap.to(preloader, {
+            yPercent: -100,
+            duration: 1.0,
+            ease: 'power4.inOut',
+            onComplete: () => {
+                preloader.style.display = 'none';
+                animateHeroEntrance();
+            }
+        });
+    }
 });
 
-const preloaderChars = preloaderText.querySelectorAll('.preloader-char');
-const preloaderTL = gsap.timeline();
-
-preloaderTL
+preloaderTl
     .to(preloaderChars, {
-        y: 0, opacity: 1, duration: 0.6,
-        stagger: 0.06, ease: 'power3.out',
-    })
-    .to(preloaderBar, { width: '100%', duration: 1.2, ease: 'power2.inOut' }, '-=0.3')
-    .to(preloaderSub, { opacity: 1, duration: 0.4 }, '-=0.8')
-    .to(preloader, {
-        opacity: 0, duration: 0.6, ease: 'power2.inOut',
-        delay: 0.3,
-        onComplete: () => {
-            preloader.style.display = 'none';
-            animateHeroEntrance();
-        }
-    });
+        y: '0%',
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.05,
+        ease: 'power3.out'
+    }, 0.2)
+    .to(preloaderBar, {
+        width: '100%',
+        duration: 1.2,
+        ease: 'power2.inOut'
+    }, 0.4)
+    .to(preloaderSub, {
+        opacity: 1,
+        duration: 0.6,
+        ease: 'power2.out'
+    }, 1.0)
+    .to({}, { duration: 0.3 });
 
 /* ═══════════════════════════════════════════
    3. SPLIT TEXT UTILITY
    ═══════════════════════════════════════════ */
 function splitTextIntoWords(element) {
+    if (!element) return [];
     const html = element.innerHTML;
-    // Get all text nodes, preserving <br> and <span>
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = html;
 
     function processNode(node) {
-        if (node.nodeType === 3) { // Text node
+        if (node.nodeType === 3) {
             const words = node.textContent.split(/(\s+)/);
             const frag = document.createDocumentFragment();
             words.forEach(word => {
@@ -1271,7 +1478,7 @@ function animateHeroEntrance() {
           y: 0, duration: 1.0, stagger: 0.04,
       }, '-=0.4')
       .to('#hero-sub', { opacity: 1, y: 0, duration: 0.8 }, '-=0.5')
-      .to('#hero-btns', { opacity: 1, y: 0, duration: 0.7 }, '-=0.4')
+      .to('#hero-cta-lockup', { opacity: 1, y: 0, duration: 0.8 }, '-=0.4')
       .to('#hero-evidence', { opacity: 1, y: 0, duration: 0.6 }, '-=0.3')
       .to('#hero-scroll-hint', { opacity: 1, duration: 0.5 }, '-=0.2');
 
@@ -1297,7 +1504,6 @@ function animateHeroEntrance() {
 /* ═══════════════════════════════════════════
    5. SCROLL-TRIGGERED ANIMATIONS
    ═══════════════════════════════════════════ */
-// Section lines animate width
 gsap.utils.toArray('.section-line').forEach(line => {
     gsap.to(line, {
         width: 28, duration: 0.8, ease: 'power2.out',
@@ -1305,7 +1511,6 @@ gsap.utils.toArray('.section-line').forEach(line => {
     });
 });
 
-// Divider lines
 gsap.utils.toArray('.divider-line').forEach(line => {
     gsap.to(line, {
         width: '100%', duration: 1.2, ease: 'power2.inOut',
@@ -1313,7 +1518,6 @@ gsap.utils.toArray('.divider-line').forEach(line => {
     });
 });
 
-// Reveal text headings (split into words)
 gsap.utils.toArray('.reveal-text:not(#hero-title)').forEach(el => {
     const words = splitTextIntoWords(el);
     gsap.to(words, {
@@ -1322,7 +1526,6 @@ gsap.utils.toArray('.reveal-text:not(#hero-title)').forEach(el => {
     });
 });
 
-// Fade-up elements
 gsap.utils.toArray('.fade-up').forEach(el => {
     gsap.from(el, {
         opacity: 0, y: 40, duration: 0.9, ease: 'power3.out',
@@ -1330,7 +1533,6 @@ gsap.utils.toArray('.fade-up').forEach(el => {
     });
 });
 
-// Card reveals (staggered)
 gsap.utils.toArray('.card-reveal').forEach((card, i) => {
     gsap.from(card, {
         opacity: 0, y: 50, scale: 0.97, duration: 0.8,
@@ -1340,7 +1542,6 @@ gsap.utils.toArray('.card-reveal').forEach((card, i) => {
     });
 });
 
-// Parallax images
 gsap.utils.toArray('.parallax-img img').forEach(img => {
     gsap.to(img, {
         yPercent: -12, ease: 'none',
@@ -1348,7 +1549,6 @@ gsap.utils.toArray('.parallax-img img').forEach(img => {
     });
 });
 
-// Header scroll state
 ScrollTrigger.create({
     start: 80, end: 99999,
     toggleClass: { targets: '.site-header', className: 'scrolled' },
@@ -1380,11 +1580,7 @@ document.querySelectorAll('.stat-big-number[data-count]').forEach(el => {
 });
 
 /* ═══════════════════════════════════════════
-   7. CUSTOM CURSOR (disabled for native smooth movement)
-   ═══════════════════════════════════════════ */
-
-/* ═══════════════════════════════════════════
-   8. MAGNETIC BUTTONS
+   7. MAGNETIC BUTTONS
    ═══════════════════════════════════════════ */
 if (window.innerWidth > 768) {
     document.querySelectorAll('.magnetic-wrap').forEach(wrap => {
@@ -1402,7 +1598,7 @@ if (window.innerWidth > 768) {
 }
 
 /* ═══════════════════════════════════════════
-   9. 3D CARD TILT
+   8. 3D CARD TILT
    ═══════════════════════════════════════════ */
 if (window.innerWidth > 768) {
     document.querySelectorAll('[data-tilt]').forEach(card => {
@@ -1421,52 +1617,52 @@ if (window.innerWidth > 768) {
                 glare.style.setProperty('--glare-y', (y * 100) + '%');
             }
         });
-
         card.addEventListener('mouseleave', () => {
-            if (inner) gsap.to(inner, { rotateX: 0, rotateY: 0, scale: 1, duration: 0.5, ease: 'power2.out',
-                clearProps: 'transform' });
+            if (inner) inner.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
         });
     });
 }
 
 /* ═══════════════════════════════════════════
-   10. THREE.JS — AMBIENT PARTICLE FIELD
+   9. THREE.JS — AMBIENT FLOATING PARTICLES
    ═══════════════════════════════════════════ */
-(function initParticles() {
+(function() {
     const canvas = document.getElementById('webgl-canvas');
     if (!canvas || typeof THREE === 'undefined') return;
 
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
     camera.position.z = 400;
 
-    const COUNT = 1200;
+    const COUNT = 160;
     const positions = new Float32Array(COUNT * 3);
-    const velocities = new Float32Array(COUNT * 3);
     const colors = new Float32Array(COUNT * 3);
+    const velocities = new Float32Array(COUNT * 3);
 
-    const emerald = new THREE.Color(0x47d399);
-    const cream = new THREE.Color(0xfbfbfa);
-    const gold = new THREE.Color(0xc9a96e);
-    const palette = [emerald, cream, gold];
+    // Alive brand particle colors
+    const brandMagenta = new THREE.Color(0xf71089);
+    const brandPink = new THREE.Color(0xff4db8);
+    const brandWhite = new THREE.Color(0xffffff);
 
     for (let i = 0; i < COUNT; i++) {
         const i3 = i * 3;
         positions[i3]     = (Math.random() - 0.5) * 1200;
         positions[i3 + 1] = (Math.random() - 0.5) * 800;
-        positions[i3 + 2] = (Math.random() - 0.5) * 600;
-        velocities[i3]     = (Math.random() - 0.5) * 0.15;
-        velocities[i3 + 1] = (Math.random() - 0.5) * 0.1;
-        velocities[i3 + 2] = (Math.random() - 0.5) * 0.08;
+        positions[i3 + 2] = (Math.random() - 0.5) * 400;
 
-        const col = palette[Math.floor(Math.random() * palette.length)];
-        colors[i3]     = col.r;
-        colors[i3 + 1] = col.g;
-        colors[i3 + 2] = col.b;
+        velocities[i3]     = (Math.random() - 0.5) * 0.25;
+        velocities[i3 + 1] = Math.random() * 0.35 + 0.08;
+        velocities[i3 + 2] = (Math.random() - 0.5) * 0.15;
+
+        const rand = Math.random();
+        const chosenColor = rand > 0.4 ? brandMagenta : (rand > 0.15 ? brandPink : brandWhite);
+        colors[i3]     = chosenColor.r;
+        colors[i3 + 1] = chosenColor.g;
+        colors[i3 + 2] = chosenColor.b;
     }
 
     const geometry = new THREE.BufferGeometry();
@@ -1474,44 +1670,41 @@ if (window.innerWidth > 768) {
     geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
     const material = new THREE.PointsMaterial({
-        size: 2.5,
+        size: 3.5,
         vertexColors: true,
         transparent: true,
-        opacity: 0.6,
-        sizeAttenuation: true,
+        opacity: 0.65,
         blending: THREE.AdditiveBlending,
-        depthWrite: false,
     });
 
     const points = new THREE.Points(geometry, material);
     scene.add(points);
 
     let mouseXNorm = 0, mouseYNorm = 0;
-    let scrollVelocity = 0;
-
-    document.addEventListener('mousemove', (e) => {
-        mouseXNorm = (e.clientX / window.innerWidth - 0.5) * 2;
-        mouseYNorm = (e.clientY / window.innerHeight - 0.5) * 2;
+    window.addEventListener('mousemove', (e) => {
+        mouseXNorm = (e.clientX / window.innerWidth) * 2 - 1;
+        mouseYNorm = (e.clientY / window.innerHeight) * 2 - 1;
     });
 
-    lenis.on('scroll', (e) => {
-        scrollVelocity = Math.abs(e.velocity) * 0.5;
-    });
+    let scrollVelocity = 0, lastScrollY = window.scrollY;
+    window.addEventListener('scroll', () => {
+        const currentY = window.scrollY;
+        scrollVelocity = (currentY - lastScrollY) * 0.05;
+        lastScrollY = currentY;
+    }, { passive: true });
 
     let time = 0;
     function animate() {
         time += 0.003;
-        scrollVelocity *= 0.95; // dampen
+        scrollVelocity *= 0.95;
 
         const pos = geometry.attributes.position.array;
         for (let i = 0; i < COUNT; i++) {
             const i3 = i * 3;
-            // Drift
             pos[i3]     += velocities[i3]     + Math.sin(time + i * 0.01) * 0.08;
             pos[i3 + 1] += velocities[i3 + 1] + Math.cos(time + i * 0.008) * 0.06 + scrollVelocity * 0.3;
             pos[i3 + 2] += velocities[i3 + 2] + Math.sin(time * 0.7 + i * 0.005) * 0.05;
 
-            // Wrap bounds
             if (pos[i3] > 600) pos[i3] = -600;
             if (pos[i3] < -600) pos[i3] = 600;
             if (pos[i3 + 1] > 400) pos[i3 + 1] = -400;
@@ -1519,12 +1712,11 @@ if (window.innerWidth > 768) {
         }
         geometry.attributes.position.needsUpdate = true;
 
-        // Gentle camera sway following mouse
         camera.position.x += (mouseXNorm * 30 - camera.position.x) * 0.02;
         camera.position.y += (-mouseYNorm * 20 - camera.position.y) * 0.02;
         camera.lookAt(scene.position);
 
-        points.rotation.y = time * 0.05;
+        points.rotation.y = time * 0.04;
         points.rotation.x = Math.sin(time * 0.3) * 0.02;
 
         renderer.render(scene, camera);
@@ -1542,9 +1734,7 @@ if (window.innerWidth > 768) {
 }); // end DOMContentLoaded
 
 /* ═══════════════════════════════════════════
-   ALPINE — CAMPAIGN GALLERY DATA
-   (defined OUTSIDE DOMContentLoaded so Alpine
-    can find it when it auto-initializes)
+   ALPINE — CAMPAIGN GALLERY DATA & SHARING
    ═══════════════════════════════════════════ */
 window.campaignGallery = function() {
     return {
@@ -1566,14 +1756,34 @@ window.campaignGallery = function() {
             document.body.style.overflow = '';
             if (window.lenis) window.lenis.start();
         },
-        getWhatsAppUrl() {
+        async shareWhatsApp() {
             const c = this.currentCard;
-            const text = `*UNFINISHED \u2014 Abortion Law Reform Campaign Nigeria*\n"${c.title}"\n${c.quote}\n\nFinish the law. Protect her future. Sign the petition: ${window.location.origin}/#petition`;
-            return `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
+            const text = `*UNFINISHED — Preventing Maternal Mortality*\n"${c.title}"\n${c.quote}\n\nReform the law. Protect our future. Sign the petition: ${window.location.origin}/#petition`;
+            
+            // On devices supporting Web Share API with file attachments (e.g. mobile Safari / Chrome)
+            if (navigator.share && navigator.canShare) {
+                try {
+                    const response = await fetch(c.image);
+                    const blob = await response.blob();
+                    const file = new File([blob], c.downloadName, { type: 'image/jpeg' });
+                    if (navigator.canShare({ files: [file] })) {
+                        await navigator.share({
+                            files: [file],
+                            title: 'Unfinished — Preventing Maternal Mortality',
+                            text: text
+                        });
+                        return;
+                    }
+                } catch (err) {
+                    console.log('Native share error or dismissed, falling back to direct URL', err);
+                }
+            }
+            // Direct WhatsApp URL fallback
+            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
         },
         getXUrl() {
             const c = this.currentCard;
-            const text = `${c.title} \u2014 Finish the law. Protect her future:`;
+            const text = `UNFINISHED — Preventing Maternal Mortality: "${c.title}" — Reform the law. Protect our future:`;
             return `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(window.location.origin + '/#petition')}`;
         },
         getFacebookUrl() {
@@ -1581,7 +1791,6 @@ window.campaignGallery = function() {
         }
     };
 };
-
 </script>
 
 </body>

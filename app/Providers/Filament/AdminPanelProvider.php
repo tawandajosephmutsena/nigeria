@@ -57,7 +57,7 @@ class AdminPanelProvider extends PanelProvider
             ->spa()
             ->brandName('unfinished')
             ->colors([
-                'primary' => Color::hex('#5FA98D'),
+                'primary' => Color::hex('#f71089'),
                 'gray' => Color::Zinc,
                 'info' => Color::hex('#7FB0C4'),
                 'success' => Color::hex('#6BAF92'),

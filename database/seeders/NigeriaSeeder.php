@@ -30,12 +30,12 @@ class NigeriaSeeder extends Seeder
                 'is_active' => true,
                 'config' => [
                     'site_name' => 'unfinished',
-                    'tagline' => 'Because Every Woman\'s Life Is Still Being Written',
+                    'tagline' => 'Unfinished Dreams • Unfinished Futures',
                     'whatsapp_number' => '+263773699063',
-                    'primary_color' => '#149865',
-                    'secondary_color' => '#0f7a51',
-                    'footer_text' => '© ' . date('Y') . ' Unfinished. All rights reserved.',
-                    'meta_description' => 'Unfinished — Amplifying the call to review Nigeria\'s maternal healthcare and abortion laws to save women\'s lives.',
+                    'primary_color' => '#f71089',
+                    'secondary_color' => '#ff269e',
+                    'footer_text' => '© ' . date('Y') . ' Unfinished — Preventing Maternal Mortality. All rights reserved.',
+                    'meta_description' => 'Unfinished — Preventing Maternal Mortality. Reform the law. Protect our future. Sign the petition.',
                     'socials' => [
                         'facebook' => 'https://facebook.com/',
                         'twitter' => 'https://twitter.com/',

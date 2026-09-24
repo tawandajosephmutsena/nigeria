@@ -16,12 +16,12 @@
                 ['Provide Shelter', 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4', 'Temt perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.'],
             ] as $service)
             <div class="text-center group">
-                <div class="w-20 h-20 mx-auto mb-6 bg-green-700/20 rounded-full flex items-center justify-center group-hover:bg-green-700 transition-all duration-300">
-                    <svg class="w-10 h-10 text-green-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="{{ $service[1] }}"/></svg>
+                <div class="w-20 h-20 mx-auto mb-6 bg-[#db0c77]/20 rounded-full flex items-center justify-center group-hover:bg-[#db0c77] transition-all duration-300">
+                    <svg class="w-10 h-10 text-[#ff2a9d] group-hover:text-white transition-colors" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="{{ $service[1] }}"/></svg>
                 </div>
                 <h3 class="text-lg font-bold text-white mb-3 uppercase tracking-wider">{{ $service[0] }}</h3>
                 <p class="text-gray-400 leading-relaxed mb-4 text-sm">{{ $service[2] }}</p>
-                <a href="#" class="inline-flex items-center gap-2 text-green-400 hover:text-green-300 font-semibold text-sm uppercase tracking-wider transition-colors">
+                <a href="#" class="inline-flex items-center gap-2 text-[#ff2a9d] hover:text-[#f472b6] font-semibold text-sm uppercase tracking-wider transition-colors">
                     See More <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </a>
             </div>

@@ -31,8 +31,8 @@
     {{-- Live brand variables: set on :root so branding.css overrides follow the dashboard. --}}
     <style>
         :root {
-            --brand-primary: {{ $branding['primary_color'] ?? '#008000' }};
-            --brand-secondary: {{ $branding['secondary_color'] ?? '#00a030' }};
+            --brand-primary: {{ $branding['primary_color'] ?? '#f71089' }};
+            --brand-secondary: {{ $branding['secondary_color'] ?? '#ff269e' }};
         }
     </style>
   </head>

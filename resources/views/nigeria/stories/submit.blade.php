@@ -18,9 +18,9 @@
             font-style: normal;
         }
         :root {
-            --emerald-500: #149865; --emerald-400: #47d399; --emerald-600: #0f7a51;
-            --dark-bg: #07120c; --dark-surface: #0f1c14; --dark-card: #14241b;
-            --cream: #fbfbfa; --warm-white: #f6f6f2; --charcoal: #0e1410; --text-muted: #64748b;
+            --orange-500: #f71089; --orange-400: #ff2a9d; --orange-600: #db0c77;
+            --dark-bg: #120a16; --dark-surface: #1a0f20; --dark-card: #23142c;
+            --cream: #fbfbfa; --warm-white: #f6f6f2; --charcoal: #140e0e; --text-muted: #64748b;
             --font-headline: 'Anton', 'MarkPro', sans-serif;
             --font-body: 'Plus Jakarta Sans', sans-serif;
             --radius-md: 18px;
@@ -31,22 +31,22 @@
 
         .site-header {
             position: sticky; top: 0; z-index: 1000;
-            background: rgba(7, 18, 12, 0.9); backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255,255,255,0.08); padding: 0 28px;
+            background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(247, 16, 137, 0.12); padding: 0 28px;
         }
         .header-inner { max-width: 1320px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 74px; }
         .logo-brand { display: flex; align-items: center; gap: 8px; font-family: var(--font-headline); font-size: 1.8rem; color: white; text-transform: uppercase; }
-        .logo-dot { width: 8px; height: 8px; background: var(--emerald-400); border-radius: 50%; }
-        .back-link { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.8); transition: color 0.2s; }
-        .back-link:hover { color: var(--emerald-400); }
+        .logo-dot { width: 8px; height: 8px; background: var(--orange-400); border-radius: 50%; }
+        .back-link { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #1e293b; transition: color 0.2s; }
+        .back-link:hover { color: var(--orange-400); }
 
         .submit-hero {
-            background: linear-gradient(135deg, #071910 0%, #0d281a 100%);
+            background: linear-gradient(135deg, #1c0a1a 0%, #2e0c24 100%);
             padding: 80px 24px 60px; text-align: center; color: white;
         }
-        .submit-hero .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(71,211,153,0.15); color: var(--emerald-300); font-size: 0.78rem; font-weight: 800; padding: 6px 16px; border-radius: 50px; margin-bottom: 18px; text-transform: uppercase; letter-spacing: 2px; border: 1px solid rgba(71,211,153,0.3); }
+        .submit-hero .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(247, 16, 137, 0.18); color: #ff60be; font-size: 0.78rem; font-weight: 800; padding: 6px 16px; border-radius: 50px; margin-bottom: 18px; text-transform: uppercase; letter-spacing: 2px; border: 1px solid rgba(247, 16, 137, 0.35); }
         .submit-hero h1 { font-family: var(--font-headline); font-size: clamp(2.2rem, 5vw, 3.6rem); text-transform: uppercase; margin-bottom: 14px; }
-        .submit-hero p { font-size: 1.05rem; color: rgba(255,255,255,0.8); max-width: 580px; margin: 0 auto; line-height: 1.7; }
+        .submit-hero p { font-size: 1.05rem; color: #1e293b; max-width: 580px; margin: 0 auto; line-height: 1.7; }
 
         .form-wrapper { max-width: 760px; margin: -30px auto 80px; padding: 0 24px; }
         .form-card { background: #fff; border-radius: var(--radius-md); padding: 48px; box-shadow: 0 12px 40px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.06); }
@@ -56,11 +56,11 @@
             width: 100%; padding: 14px 18px; border: 1.5px solid rgba(0,0,0,0.12);
             border-radius: 12px; font-family: inherit; font-size: 0.95rem; color: var(--charcoal); background: #fdfdfc; outline: none; transition: border-color .2s;
         }
-        .form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--emerald-500); }
-        .btn-submit-form { width: 100%; padding: 18px; background: var(--emerald-500); color: white; font-family: var(--font-headline); font-size: 1.15rem; text-transform: uppercase; letter-spacing: 1px; border: none; border-radius: 14px; cursor: pointer; transition: background .2s, transform .2s; }
-        .btn-submit-form:hover { background: var(--emerald-600); transform: translateY(-2px); }
+        .form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--orange-500); }
+        .btn-submit-form { width: 100%; padding: 18px; background: var(--orange-500); color: white; font-family: var(--font-headline); font-size: 1.15rem; text-transform: uppercase; letter-spacing: 1px; border: none; border-radius: 14px; cursor: pointer; transition: background .2s, transform .2s; }
+        .btn-submit-form:hover { background: var(--orange-600); transform: translateY(-2px); }
 
-        footer.site-footer { padding: 60px 28px; background: #050b07; color: white; text-align: center; font-size: .88rem; }
+        footer.site-footer { padding: 60px 28px; background: #100814; border-top: 1px solid rgba(247, 16, 137, 0.15); color: white; text-align: center; font-size: .88rem; }
     </style>
 </head>
 <body>
@@ -68,8 +68,7 @@
 <header class="site-header">
     <div class="header-inner">
         <a href="/" class="logo-brand">
-            <span>unfinished</span>
-            <span class="logo-dot"></span>
+            <img src="{{ asset('themes/nigeria/img/logos/logo-nav-horizontal.webp') }}" alt="UNFINISHED" style="height:42px;width:auto;display:block;">
         </a>
         <a href="{{ route('stories.index') }}" class="back-link">← Back to Stories</a>
     </div>
@@ -144,7 +143,10 @@
 </main>
 
 <footer class="site-footer">
-    <p>© {{ date('Y') }} unfinished — Abortion Law Reform Campaign Nigeria. Finish the law. Protect her future.</p>
+    <img src="{{ asset('themes/nigeria/img/logos/logo-footer-square.webp') }}" alt="UNFINISHED" style="height:64px;width:auto;margin:0 auto 18px;display:block;">
+    <p style="font-family:var(--font-headline);font-size:1.1rem;color:#ff60be;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;">Unfinished Dreams • Unfinished Futures</p>
+    <p style="color:rgba(255,255,255,0.7);margin-bottom:14px;">Reform the law. Protect our future. Sign the petition.</p>
+    <p style="color:rgba(255,255,255,0.4);font-size:.82rem;">© {{ date('Y') }} UNFINISHED — Preventing Maternal Mortality. All rights reserved.</p>
 </footer>
 
 </body>

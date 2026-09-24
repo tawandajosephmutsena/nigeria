@@ -18,7 +18,7 @@
                 <div class="border border-gray-200 rounded-lg overflow-hidden">
                     <button @click="open = open === {{ $i }} ? 0 : {{ $i }}" 
                             class="w-full flex items-center justify-between px-6 py-4 text-left bg-gray-50 hover:bg-gray-100 transition-colors"
-                            :class="{ 'bg-green-700 text-white hover:bg-green-800': open === {{ $i }} }">
+                            :class="{ 'bg-[#db0c77] text-white hover:bg-[#b50761]': open === {{ $i }} }">
                         <span class="font-bold uppercase tracking-wider text-sm">{{ $item[0] }}</span>
                         <svg class="w-5 h-5 transition-transform duration-300" :class="{ 'rotate-180': open === {{ $i }} }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </button>

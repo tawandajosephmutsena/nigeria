@@ -11,7 +11,7 @@
             </div>
 
             <div class="flex flex-wrap items-center gap-2.5">
-                <a href="/admin/website/pages/create" class="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold transition shadow-sm">
+                <a href="/admin/website/pages/create" class="inline-flex items-center gap-1.5 px-4 py-2 bg-pink-600 hover:bg-pink-500 text-white rounded-xl text-xs font-bold transition shadow-sm">
                     📄 Add New Page
                 </a>
                 <a href="/admin/website/petitions" class="inline-flex items-center gap-1.5 px-4 py-2 bg-rose-600 hover:bg-rose-500 text-white rounded-xl text-xs font-bold transition shadow-sm">

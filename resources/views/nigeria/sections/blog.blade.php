@@ -12,9 +12,9 @@
                 ['We Build School & Hospital', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore. Sed ut perspiciatis unde omnis iste natus error sit voluptatem.', '1 Jan 2024', 'Admin'],
             ] as $post)
             <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
-                <a href="#" class="block h-56 bg-gradient-to-br from-green-200 to-green-400 relative overflow-hidden">
-                    <div class="absolute inset-0 bg-green-900/0 group-hover:bg-green-900/40 transition-colors duration-300"></div>
-                    <div class="absolute top-4 right-4 bg-green-700 text-white px-3 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider z-10">
+                <a href="#" class="block h-56 bg-gradient-to-br from-pink-200 to-[#ff2a9d] relative overflow-hidden">
+                    <div class="absolute inset-0 bg-orange-900/0 group-hover:bg-orange-900/40 transition-colors duration-300"></div>
+                    <div class="absolute top-4 right-4 bg-[#db0c77] text-white px-3 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider z-10">
                         {{ $post[2] }}
                     </div>
                 </a>
@@ -26,9 +26,9 @@
                         </span>
                         <span>{{ $post[2] }}</span>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wider group-hover:text-green-700 transition-colors">{{ $post[0] }}</h3>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wider group-hover:text-[#db0c77] transition-colors">{{ $post[0] }}</h3>
                     <p class="text-gray-500 text-sm leading-relaxed mb-4">{{ $post[1] }}</p>
-                    <a href="#" class="inline-flex items-center gap-2 text-green-700 hover:text-green-800 font-bold uppercase tracking-wider text-xs transition-colors">
+                    <a href="#" class="inline-flex items-center gap-2 text-[#db0c77] hover:text-[#b50761] font-bold uppercase tracking-wider text-xs transition-colors">
                         Read More <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     </a>
                 </div>
