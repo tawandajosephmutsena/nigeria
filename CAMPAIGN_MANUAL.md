@@ -127,23 +127,43 @@ When visitors reach out via the contact form:
 
 ---
 
-## 9. Server & Deployment Checklist
+## 9. Krystal Shared Hosting (cPanel) Deployment Guide
 
-When deploying changes to the production server:
+This repository is **pre-built and turnkey**:
+- ✅ Full `vendor/` included (no `composer install` required on the server)
+- ✅ Pre-compiled frontend assets in `public/build/` (no `npm run build` required on the server)
+- ✅ Pre-published Filament admin assets in `public/css/`, `public/js/`, and `public/fonts/`
+- ✅ Pre-seeded SQLite database in `database/database.sqlite` with theme, admin user, stories, and petition tables
+- ✅ Root `.htaccess` for automatic routing on cPanel subdomains
 
+### Step 1: Pull the Repository to cPanel
+In cPanel **Git Version Control** (or via SSH in `/home/USERNAME/unfinished.africa`):
+- Repository: `https://github.com/tawandajosephmutsena/nigeria.git`
+- Branch: `5.x`
+- Target Directory: `unfinished.africa`
+
+If updating an existing clone via SSH:
 ```bash
-# 1. Pull latest code from GitHub (branch 5.x)
+cd ~/unfinished.africa
 git pull origin 5.x
-
-# 2. Run migrations and seeders (if setting up fresh environment)
-php artisan migrate --force
-php artisan db:seed --class=NigeriaSeeder --force
-
-# 3. Optimize application performance
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
-
-# 4. Ensure storage symlink exists for media
-php artisan storage:link
 ```
+
+### Step 2: Set Up `.env`
+In cPanel **File Manager** (or via SSH):
+1. Copy `.env.example` to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+2. The `.env.example` is already fully configured for `https://unfinished.africa` with a valid `APP_KEY`, SQLite database configuration, and the official WhatsApp number `+234 915 068 4078`. No changes are required unless you wish to switch to MySQL.
+
+### Step 3: Verify Domain Document Root
+In **cPanel > Domains**:
+- For `unfinished.africa`, set the **Document Root** to: `unfinished.africa/public` (or leave as `unfinished.africa`—the included root `.htaccess` will automatically rewrite requests to `public/`).
+
+### Step 4: File Permissions
+Ensure the following directories have write permissions (cPanel default `755` or `775`):
+- `storage/` (and all subdirectories)
+- `bootstrap/cache/`
+- `database/database.sqlite` (and the `database/` directory so SQLite can create temporary journals)
+
+That's it! Visit **`https://unfinished.africa`** and log in to the admin at **`https://unfinished.africa/admin`**.
