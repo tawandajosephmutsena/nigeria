@@ -12,6 +12,7 @@ use App\Models\Story;
 use App\Models\Theme;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class NigeriaSeeder extends Seeder
 {
@@ -31,7 +32,7 @@ class NigeriaSeeder extends Seeder
                 'config' => [
                     'site_name' => 'unfinished',
                     'tagline' => 'Unfinished Dreams • Unfinished Futures',
-                    'whatsapp_number' => '+263773699063',
+                    'whatsapp_number' => '+234 915 068 4078',
                     'primary_color' => '#f71089',
                     'secondary_color' => '#ff269e',
                     'footer_text' => '© ' . date('Y') . ' Unfinished — Preventing Maternal Mortality. All rights reserved.',
@@ -294,7 +295,14 @@ class NigeriaSeeder extends Seeder
         $this->command->info('  ✓ Sample contact messages');
 
         // ─── Sample Stories ────────────────────────────────────────────────────
-        $admin = User::where('email', 'admin@filamentphp.com')->first();
+        $admin = User::firstOrCreate(
+            ['email' => 'admin@filamentphp.com'],
+            [
+                'name' => 'Demo User',
+                'password' => Hash::make('demo.Filament@2021!'),
+                'email_verified_at' => now(),
+            ],
+        );
 
         if ($admin) {
             $stories = [

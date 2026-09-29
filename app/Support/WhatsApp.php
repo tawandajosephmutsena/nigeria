@@ -15,7 +15,7 @@ class WhatsApp
     {
         $config = Theme::query()->where('is_default', true)->value('config') ?? [];
 
-        return data_get($config, 'whatsapp_number') ?: config('services.whatsapp.number', '+263773699063');
+        return data_get($config, 'whatsapp_number') ?: config('services.whatsapp.number', '+234 915 068 4078');
     }
 
     /** Digits only, no + or spaces — the format wa.me links need. */

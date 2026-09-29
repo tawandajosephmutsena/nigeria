@@ -27,6 +27,10 @@ test('it renders the public landing page with brand colors, unified headline CTA
     // WhatsApp sharing / file naming without old text
     $response->assertDontSee('Abortion Law Reform Campaign Nigeria');
     $response->assertSee('Unfinished — Preventing Maternal Mortality');
+
+    // WhatsApp campaign desk & FAB receiver number
+    $response->assertSee('https://wa.me/2349150684078');
+    $response->assertDontSee('263773699063');
 });
 
 test('it renders all 10 campaign visuals with updated maternal mortality naming', function () {

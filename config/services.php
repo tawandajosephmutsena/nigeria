@@ -30,4 +30,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'whatsapp' => [
+        'number' => env('WHATSAPP_NUMBER', '+234 915 068 4078'),
+    ],
+
 ];

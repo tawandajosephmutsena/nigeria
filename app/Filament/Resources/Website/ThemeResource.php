@@ -103,7 +103,7 @@ class ThemeResource extends Resource
 
                                 TextInput::make('config.whatsapp_number')
                                     ->label('WhatsApp number')
-                                    ->placeholder('+263773699063')
+                                    ->placeholder('+234 915 068 4078')
                                     ->helperText('Where website messages / chats go. Current: ' . WhatsApp::number()),
 
                                 ColorPicker::make('config.primary_color')

@@ -1329,7 +1329,7 @@
             </div>
             <div>
                 <p class="footer-col-title">Contact</p>
-                <a href="https://wa.me/263773699063" target="_blank" class="footer-link">WhatsApp Campaign Desk</a>
+                <a href="{{ \App\Support\WhatsApp::chatLink() }}" target="_blank" class="footer-link">WhatsApp Campaign Desk</a>
                 <p style="color:rgba(255,255,255,0.4);font-size:.82rem;margin-top:18px;line-height:1.6;">Abuja & Lagos, Nigeria</p>
             </div>
         </div>
@@ -1341,7 +1341,7 @@
 </footer>
 
 <!-- WhatsApp FAB -->
-<a href="https://wa.me/263773699063?text=I%20want%20to%20support%20the%20Unfinished%20Preventing%20Maternal%20Mortality%20Campaign"
+<a href="{{ \App\Support\WhatsApp::chatLink('I want to support the Unfinished Preventing Maternal Mortality Campaign') }}"
    target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" data-cursor="CHAT"
    style="position:fixed;bottom:28px;right:28px;z-index:9000;width:60px;height:60px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 28px rgba(37,211,102,0.45);transition:transform .3s cubic-bezier(.4,0,.2,1);"
    onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
