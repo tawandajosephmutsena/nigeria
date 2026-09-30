@@ -361,6 +361,618 @@
         color: rgba(255,255,255,0.5); writing-mode: vertical-rl;
     }
 
+    /* ═══ HERO SLIDER EXTENSIONS ═══ */
+    .hero-slide {
+        position: absolute; inset: 0; width: 100%; height: 100%;
+        opacity: 0; visibility: hidden; pointer-events: none;
+        transition: opacity 0.85s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.85s ease;
+        z-index: 1;
+    }
+    .hero-slide.is-active {
+        opacity: 1; visibility: visible; pointer-events: auto;
+        z-index: 2;
+    }
+    .hero-slide-media {
+        position: absolute; inset: 0; width: 100%; height: 100%;
+        object-fit: cover; filter: brightness(0.78) contrast(1.08) saturate(1.1);
+        transform: scale(1.0);
+        transition: transform 8s ease-out;
+        will-change: transform;
+    }
+    .hero-slide.is-active .hero-slide-media {
+        transform: scale(1.05);
+    }
+    .hero-slide .hero-inner-content {
+        opacity: 0; transform: translateY(22px);
+        transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+    }
+    .hero-slide.is-active .hero-inner-content {
+        opacity: 1; transform: translateY(0);
+    }
+    .hero-slide:first-child.is-active .hero-inner-content {
+        opacity: 1; transform: translateY(0);
+    }
+
+    .hero-arrow {
+        position: absolute; top: 50%; transform: translateY(-50%);
+        z-index: 15; width: 52px; height: 52px; border-radius: 50%;
+        background: rgba(18, 10, 22, 0.55); border: 1.5px solid rgba(255, 255, 255, 0.25);
+        color: #ffffff; display: flex; align-items: center; justify-content: center;
+        backdrop-filter: blur(14px); cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+    .hero-arrow:hover {
+        background: var(--brand-500); border-color: var(--brand-400);
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 12px 32px rgba(247, 16, 137, 0.55);
+    }
+    .hero-arrow-prev { left: 32px; }
+    .hero-arrow-next { right: 32px; }
+
+    .hero-slider-nav {
+        position: absolute; bottom: 32px; left: 0; right: 0;
+        z-index: 15; display: flex; justify-content: center;
+        padding: 0 24px; pointer-events: none;
+    }
+    .hero-slider-indicators {
+        display: flex; align-items: center; gap: 12px;
+        background: rgba(18, 10, 22, 0.78); border: 1px solid rgba(255, 255, 255, 0.16);
+        padding: 8px 16px; border-radius: 50px;
+        backdrop-filter: blur(16px); pointer-events: auto;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+        max-width: 920px; width: auto;
+    }
+    .hero-indicator-btn {
+        background: none; border: none; padding: 6px 14px;
+        cursor: pointer; display: flex; flex-direction: column; gap: 4px;
+        text-align: left; border-radius: 8px; transition: background 0.25s ease;
+    }
+    .hero-indicator-btn:hover { background: rgba(255, 255, 255, 0.1); }
+    .indicator-meta { display: flex; align-items: center; gap: 8px; }
+    .indicator-num {
+        font-family: var(--font-headline); font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.5); letter-spacing: 1px;
+    }
+    .hero-indicator-btn.is-active .indicator-num { color: var(--brand-400); }
+    .indicator-title {
+        font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+        letter-spacing: 1px; color: rgba(255, 255, 255, 0.75); white-space: nowrap;
+    }
+    .hero-indicator-btn.is-active .indicator-title { color: #ffffff; }
+    .indicator-bar-track {
+        width: 100%; min-width: 60px; height: 3px;
+        background: rgba(255, 255, 255, 0.2); border-radius: 3px; overflow: hidden;
+    }
+    .indicator-bar-fill {
+        height: 100%; background: var(--brand-500);
+        box-shadow: 0 0 8px var(--brand-400); border-radius: 3px;
+        transition: width 0.06s linear;
+    }
+
+    @media (max-width: 991px) {
+        .hero-arrow { display: none; }
+        .indicator-title { display: none; }
+        .indicator-bar-track { min-width: 28px; }
+        .hero-slider-indicators { gap: 6px; padding: 6px 10px; }
+    }
+
+    /* ═══ EVENTS SECTION ═══ */
+    .events-section {
+        background: #ffffff;
+        position: relative;
+    }
+    .event-meta-bar {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 18px;
+        background: linear-gradient(135deg, #ffffff 0%, #fff2f8 100%);
+        border: 1.5px solid rgba(247, 16, 137, 0.18);
+        border-radius: var(--radius-md);
+        padding: 24px 30px;
+        margin-bottom: 56px;
+        box-shadow: 0 10px 30px rgba(247, 16, 137, 0.06);
+    }
+    .event-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+    .event-meta-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        background: rgba(247, 16, 137, 0.1);
+        border: 1px solid rgba(247, 16, 137, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        flex-shrink: 0;
+    }
+    .event-meta-label {
+        display: block;
+        font-size: 0.72rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--brand-600);
+        margin-bottom: 2px;
+    }
+    .event-meta-value {
+        display: block;
+        font-size: 0.95rem;
+        color: var(--charcoal);
+        font-weight: 700;
+        line-height: 1.35;
+    }
+
+    /* Narrative Split */
+    .event-narrative-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 52px;
+        align-items: center;
+        margin-bottom: 64px;
+    }
+    .event-tag-pill {
+        display: inline-block;
+        background: rgba(247, 16, 137, 0.1);
+        color: var(--brand-600);
+        font-weight: 800;
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding: 6px 18px;
+        border-radius: 50px;
+        margin-bottom: 20px;
+        border: 1px solid rgba(247, 16, 137, 0.2);
+    }
+    .event-story-title {
+        font-family: var(--font-headline);
+        font-size: clamp(2rem, 3.4vw, 2.75rem);
+        text-transform: uppercase;
+        line-height: 1.12;
+        color: var(--charcoal);
+        margin-bottom: 20px;
+    }
+    .event-story-p {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: var(--text-body);
+        margin-bottom: 20px;
+    }
+    .event-quote-box {
+        border-left: 4px solid var(--brand-500);
+        padding: 18px 24px;
+        background: linear-gradient(90deg, rgba(247,16,137,0.06) 0%, transparent 100%);
+        border-radius: 0 14px 14px 0;
+        margin: 28px 0;
+    }
+    .event-quote-text {
+        font-family: var(--font-headline);
+        font-size: clamp(1.15rem, 2vw, 1.45rem);
+        color: var(--brand-600);
+        line-height: 1.35;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    .event-actions-row {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-top: 30px;
+    }
+    .btn-event-primary {
+        background: var(--brand-500);
+        color: white;
+        padding: 14px 32px;
+        border-radius: 50px;
+        font-weight: 800;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        box-shadow: 0 6px 24px rgba(247, 16, 137, 0.35);
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .btn-event-primary:hover {
+        background: var(--brand-600);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(247, 16, 137, 0.5);
+    }
+    .btn-event-secondary {
+        border: 1.5px solid rgba(247, 16, 137, 0.35);
+        color: var(--charcoal);
+        padding: 14px 28px;
+        border-radius: 50px;
+        font-weight: 800;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .btn-event-secondary:hover {
+        background: var(--brand-50);
+        border-color: var(--brand-500);
+        color: var(--brand-600);
+    }
+
+    /* Event Featured Card */
+    .event-featured-card {
+        background: #ffffff;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        border: 1.5px solid rgba(247, 16, 137, 0.18);
+        box-shadow: 0 20px 50px rgba(247, 16, 137, 0.1), 0 4px 12px rgba(0,0,0,0.04);
+        position: relative;
+    }
+    .event-featured-media {
+        position: relative;
+        overflow: hidden;
+        height: 380px;
+    }
+    .event-featured-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .event-featured-card:hover .event-featured-media img {
+        transform: scale(1.05);
+    }
+    .event-featured-badge {
+        position: absolute;
+        bottom: 18px;
+        left: 18px;
+        background: rgba(18, 10, 22, 0.85);
+        color: #ffffff;
+        padding: 8px 18px;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 42, 157, 0.4);
+    }
+    .event-featured-caption {
+        padding: 28px;
+    }
+    .event-caption-title {
+        font-family: var(--font-headline);
+        font-size: 1.35rem;
+        text-transform: uppercase;
+        color: var(--charcoal);
+        margin-bottom: 8px;
+    }
+    .event-caption-desc {
+        font-size: 0.92rem;
+        color: var(--text-body);
+        line-height: 1.65;
+    }
+
+    /* Policy Demands Banner */
+    .event-policy-banner {
+        background: linear-gradient(135deg, #120a16 0%, #24112c 100%);
+        color: #ffffff;
+        border-radius: var(--radius-lg);
+        padding: 56px 48px;
+        margin: 64px 0;
+        border: 1.5px solid rgba(255, 42, 157, 0.28);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+        position: relative;
+        overflow: hidden;
+    }
+    .event-policy-banner::before {
+        content: '';
+        position: absolute;
+        top: -40%;
+        right: -10%;
+        width: 450px;
+        height: 450px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(247,16,137,0.18), transparent 70%);
+        pointer-events: none;
+    }
+    .policy-banner-header { margin-bottom: 18px; }
+    .policy-badge {
+        display: inline-block;
+        background: rgba(247, 16, 137, 0.25);
+        border: 1px solid rgba(255, 42, 157, 0.5);
+        color: #ff60be;
+        font-size: 0.75rem;
+        font-weight: 800;
+        padding: 6px 18px;
+        border-radius: 50px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+    }
+    .policy-headline {
+        font-family: var(--font-headline);
+        font-size: clamp(2rem, 3.5vw, 2.75rem);
+        text-transform: uppercase;
+        color: #ffffff;
+        line-height: 1.15;
+    }
+    .policy-lead {
+        font-size: 1.18rem;
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.92);
+        margin-bottom: 40px;
+        max-width: 980px;
+    }
+    .policy-lead strong {
+        color: var(--brand-300);
+        font-weight: 800;
+    }
+    .policy-pillars-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        position: relative;
+        z-index: 2;
+    }
+    .policy-pillar-item {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 18px;
+        padding: 28px;
+        display: flex;
+        gap: 18px;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .policy-pillar-item:hover {
+        transform: translateY(-4px);
+        border-color: rgba(255, 42, 157, 0.45);
+        background: rgba(255, 255, 255, 0.08);
+    }
+    .policy-pillar-num {
+        font-family: var(--font-headline);
+        font-size: 2rem;
+        color: var(--brand-400);
+        line-height: 1;
+        flex-shrink: 0;
+    }
+    .policy-pillar-title {
+        font-size: 0.98rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #ffffff;
+        margin-bottom: 8px;
+    }
+    .policy-pillar-text {
+        font-size: 0.88rem;
+        color: rgba(255, 255, 255, 0.78);
+        line-height: 1.65;
+    }
+
+    /* Media & Press Block */
+    .event-news-block { margin: 72px 0; }
+    .event-news-grid {
+        display: grid;
+        grid-template-columns: 1.35fr 1fr 1fr;
+        gap: 26px;
+    }
+    .news-card {
+        background: #ffffff;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        border: 1.5px solid rgba(247, 16, 137, 0.14);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+    .news-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 50px rgba(247, 16, 137, 0.14);
+        border-color: rgba(247, 16, 137, 0.4);
+    }
+    .news-video-frame {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%;
+        height: 0;
+        background: #000000;
+        overflow: hidden;
+    }
+    .news-video-frame iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+    .news-press-header {
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        position: relative;
+    }
+    .news-press-icon { font-size: 2rem; }
+    .news-card-body {
+        padding: 28px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .news-source-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 12px;
+    }
+    .news-outlet-badge {
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 4px 12px;
+        border-radius: 50px;
+    }
+    .news-outlet-channels { background: #dc2626; color: #ffffff; }
+    .news-outlet-guardian { background: #0284c7; color: #ffffff; }
+    .news-outlet-dailytrust { background: #be123c; color: #ffffff; }
+    .news-date {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--text-muted);
+        text-transform: uppercase;
+    }
+    .news-press-category {
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--brand-600);
+    }
+    .news-title {
+        font-family: var(--font-headline);
+        font-size: 1.25rem;
+        text-transform: uppercase;
+        line-height: 1.25;
+        color: var(--charcoal);
+        margin-bottom: 12px;
+    }
+    .news-excerpt {
+        font-size: 0.9rem;
+        color: var(--text-body);
+        line-height: 1.65;
+        margin-bottom: 22px;
+    }
+    .news-link-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--brand-600);
+        font-weight: 800;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: gap 0.25s ease, color 0.25s ease;
+    }
+    .news-link-btn:hover {
+        color: var(--brand-500);
+        gap: 12px;
+    }
+
+    /* Live Event Gallery */
+    .event-gallery-block { margin: 72px 0; }
+    .event-gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    .event-photo-card {
+        background: #ffffff;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid rgba(247, 16, 137, 0.14);
+        cursor: pointer;
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        display: flex;
+        flex-direction: column;
+    }
+    .event-photo-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 40px rgba(247, 16, 137, 0.16);
+        border-color: rgba(247, 16, 137, 0.4);
+    }
+    .event-photo-thumb {
+        position: relative;
+        height: 190px;
+        overflow: hidden;
+        background: #1a0f20;
+    }
+    .event-photo-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .event-photo-card:hover .event-photo-thumb img {
+        transform: scale(1.08);
+    }
+    .event-photo-glare {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 60%);
+        pointer-events: none;
+    }
+    .event-photo-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(18, 10, 22, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    .event-photo-card:hover .event-photo-overlay {
+        opacity: 1;
+    }
+    .event-photo-expand {
+        background: rgba(255, 255, 255, 0.95);
+        color: var(--charcoal);
+        padding: 8px 18px;
+        border-radius: 50px;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.8px;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    }
+    .event-photo-caption {
+        padding: 18px 20px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    .event-photo-idx {
+        font-size: 0.7rem;
+        font-weight: 800;
+        color: var(--brand-500);
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+    }
+    .event-photo-heading {
+        font-size: 0.95rem;
+        font-weight: 800;
+        color: var(--charcoal);
+        line-height: 1.3;
+        margin-bottom: 6px;
+    }
+    .event-photo-text {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        line-height: 1.55;
+    }
+
+    @media (max-width: 1080px) {
+        .event-news-grid { grid-template-columns: 1fr; }
+        .event-narrative-grid { grid-template-columns: 1fr; gap: 36px; }
+        .event-featured-media { height: 300px; }
+    }
+    @media (max-width: 768px) {
+        .event-meta-bar { padding: 20px; }
+        .event-policy-banner { padding: 36px 24px; }
+    }
+
     /* ═══ MARQUEE TICKER ═══ */
     .marquee-wrap {
         overflow: hidden; padding: 18px 0;
@@ -858,6 +1470,7 @@
 
         <nav class="nav-links">
             <a href="#about" class="nav-link">About</a>
+            <a href="#events" class="nav-link">Live Event</a>
             <a href="#pillars" class="nav-link">The 4 Pillars</a>
             <a href="#stats" class="nav-link">Research Data</a>
             <a href="#gallery" class="nav-link">Campaign Cards</a>
@@ -874,6 +1487,7 @@
     <div x-show="mobileOpen" x-transition class="mobile-drawer">
         <img src="{{ asset('themes/nigeria/img/logos/logo-nav-horizontal.webp') }}" alt="UNFINISHED" class="mobile-logo-img">
         <a href="#about" @click="mobileOpen=false" class="mobile-link">About</a>
+        <a href="#events" @click="mobileOpen=false" class="mobile-link">Live Event</a>
         <a href="#pillars" @click="mobileOpen=false" class="mobile-link">The 4 Pillars</a>
         <a href="#stats" @click="mobileOpen=false" class="mobile-link">Research Data</a>
         <a href="#gallery" @click="mobileOpen=false" class="mobile-link">Campaign Cards</a>
@@ -883,58 +1497,255 @@
     </div>
 </header>
 
-<!-- ═══ HERO ═══ -->
-<section id="home" class="hero-wrap">
-    <video autoplay muted loop playsinline class="hero-video-bg" id="hero-video"
-           poster="{{ asset('themes/nigeria/site_images/ChatGPT Image Sep 1, 2026, 11_09_56 AM (4).png') }}">
-        <source src="{{ asset('themes/nigeria/videos/hero-bg.mp4') }}" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
-    <div class="hero-grain"></div>
+<!-- ═══ HERO SLIDER ═══ -->
+<section id="home" class="hero-wrap" x-data="heroSlider()" @mouseenter="pause()" @mouseleave="resume()" @touchstart.passive="handleTouchStart($event)" @touchend.passive="handleTouchEnd($event)">
 
-    <div class="hero-content">
-        <div class="hero-inner">
-            <div class="hero-badge" id="hero-badge">
-                <span class="hero-badge-pulse"></span>
-                <span>UNFINISHED • PREVENTING MATERNAL MORTALITY</span>
-            </div>
+    {{-- Slide 0: Current Hero with Video Background --}}
+    <div class="hero-slide" :class="{ 'is-active': currentSlide === 0 }">
+        <video autoplay muted loop playsinline class="hero-video-bg hero-slide-media" id="hero-video"
+               poster="{{ asset('themes/nigeria/site_images/ChatGPT Image Sep 1, 2026, 11_09_56 AM (4).png') }}">
+            <source src="{{ asset('themes/nigeria/videos/hero-bg.mp4') }}" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-grain"></div>
 
-            <h1 class="hero-title reveal-text" id="hero-title">
-                Unfinished Dreams.<br>
-                <span class="highlight">Unfinished Futures.</span>
-            </h1>
-
-            <p class="hero-sub" id="hero-sub">
-                Across Nigeria, every woman lost to preventable pregnancy complications leaves behind a name, a family, and a life still being written. Outdated legal frameworks must not stand between Nigerian women and timely healthcare.
-            </p>
-
-            <div class="hero-cta-lockup" id="hero-cta-lockup">
-                <div class="hero-cta-tagline">
-                    <span class="cta-dot"></span>
-                    <span>Reform the law. Protect our future. Sign the petition.</span>
+        <div class="hero-content">
+            <div class="hero-inner hero-inner-content">
+                <div class="hero-badge" id="hero-badge">
+                    <span class="hero-badge-pulse"></span>
+                    <span>UNFINISHED • PREVENTING MATERNAL MORTALITY</span>
                 </div>
 
-                <div class="hero-btns" id="hero-btns">
-                    <div class="magnetic-wrap">
-                        <a href="#petition" class="btn-hero-primary" data-cursor="SIGN">
-                            <span>Sign The Petition</span>
-                            <span>✍️</span>
-                        </a>
+                <h1 class="hero-title reveal-text" id="hero-title">
+                    Unfinished Dreams.<br>
+                    <span class="highlight">Unfinished Futures.</span>
+                </h1>
+
+                <p class="hero-sub" id="hero-sub">
+                    Across Nigeria, every woman lost to preventable pregnancy complications leaves behind a name, a family, and a life still being written. Outdated legal frameworks must not stand between Nigerian women and timely healthcare.
+                </p>
+
+                <div class="hero-cta-lockup" id="hero-cta-lockup">
+                    <div class="hero-cta-tagline">
+                        <span class="cta-dot"></span>
+                        <span>Reform the law. Protect our future. Sign the petition.</span>
                     </div>
-                    <div class="magnetic-wrap">
-                        <a href="#gallery" class="btn-hero-secondary" data-cursor="EXPLORE">
-                            <span>Campaign Visuals</span>
-                            <span>→</span>
-                        </a>
+
+                    <div class="hero-btns" id="hero-btns">
+                        <div class="magnetic-wrap">
+                            <a href="#petition" class="btn-hero-primary" data-cursor="SIGN">
+                                <span>Sign The Petition</span>
+                                <span>✍️</span>
+                            </a>
+                        </div>
+                        <div class="magnetic-wrap">
+                            <a href="#events" class="btn-hero-secondary" data-cursor="EXPLORE">
+                                <span>Abuja Live Event</span>
+                                <span>→</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="hero-evidence" id="hero-evidence">
-                <span style="color:var(--brand-400);font-weight:800;">✓ EVIDENCE-BASED</span>
-                <span style="opacity:0.4;">•</span>
-                <span>Protecting Women, Healthcare Workers & Families Across Nigeria</span>
+                <div class="hero-evidence" id="hero-evidence">
+                    <span style="color:var(--brand-400);font-weight:800;">✓ EVIDENCE-BASED</span>
+                    <span style="opacity:0.4;">•</span>
+                    <span>Protecting Women, Healthcare Workers & Families Across Nigeria</span>
+                </div>
             </div>
+        </div>
+    </div>
+
+    {{-- Slide 1: Image 1 (_HUR4556) - Lawmakers, Doctors & Dignitaries at Transcorp Hilton --}}
+    <div class="hero-slide" :class="{ 'is-active': currentSlide === 1 }">
+        <picture>
+            <source srcset="{{ asset('themes/nigeria/events/_HUR4556.webp') }}" type="image/webp">
+            <img src="{{ asset('themes/nigeria/events/_HUR4556.jpg') }}" alt="Live Campaign Launch at Transcorp Hilton Abuja" class="hero-slide-media" loading="eager">
+        </picture>
+        <div class="hero-overlay"></div>
+        <div class="hero-grain"></div>
+
+        <div class="hero-content">
+            <div class="hero-inner hero-inner-content">
+                <div class="hero-badge">
+                    <span class="hero-badge-pulse"></span>
+                    <span>LIVE CAMPAIGN EVENT • TRANSCORP HILTON, ABUJA</span>
+                </div>
+
+                <h2 class="hero-title">
+                    Ten Portraits Stood<br>
+                    <span class="highlight">Deliberately Unfinished.</span>
+                </h2>
+
+                <p class="hero-sub">
+                    At Transcorp Hilton, Abuja, ten artists portrayed ten Nigerian women before legislators, policymakers, doctors, and development partners. The unfinished portraits reflect an unfinished law.
+                </p>
+
+                <div class="hero-cta-lockup">
+                    <div class="hero-cta-tagline">
+                        <span class="cta-dot"></span>
+                        <span>Monday, 28 September 2026 • Live Abuja Exhibition & Dialogue</span>
+                    </div>
+
+                    <div class="hero-btns">
+                        <div class="magnetic-wrap">
+                            <a href="#events" class="btn-hero-primary" data-cursor="EXPLORE">
+                                <span>Explore The Event</span>
+                                <span>→</span>
+                            </a>
+                        </div>
+                        <div class="magnetic-wrap">
+                            <a href="#petition" class="btn-hero-secondary" data-cursor="SIGN">
+                                <span>Sign The Petition</span>
+                                <span>✍️</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-evidence">
+                    <span style="color:var(--brand-400);font-weight:800;">✓ HISTORIC ADVOCACY</span>
+                    <span style="opacity:0.4;">•</span>
+                    <span>Bringing Lawmakers, Medical Experts & Artists To One Table</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Slide 2: Image 2 (_HUR4606) - The Unfinished Canvas & Legal Reality --}}
+    <div class="hero-slide" :class="{ 'is-active': currentSlide === 2 }">
+        <picture>
+            <source srcset="{{ asset('themes/nigeria/events/_HUR4606.webp') }}" type="image/webp">
+            <img src="{{ asset('themes/nigeria/events/_HUR4606.jpg') }}" alt="Ten Unfinished Portraits of Nigerian Women" class="hero-slide-media" loading="eager">
+        </picture>
+        <div class="hero-overlay"></div>
+        <div class="hero-grain"></div>
+
+        <div class="hero-content">
+            <div class="hero-inner hero-inner-content">
+                <div class="hero-badge">
+                    <span class="hero-badge-pulse"></span>
+                    <span>VOICES OF EXPERTS • LEGAL REALITIES</span>
+                </div>
+
+                <h2 class="hero-title">
+                    The Courts Have Moved.<br>
+                    <span class="highlight">The Law Must Move With Them.</span>
+                </h2>
+
+                <p class="hero-sub">
+                    Nigeria has doctors trained and ready to save women in need, yet many are left navigating uncertainty when statutory provisions do not reflect lived realities. Finish the law.
+                </p>
+
+                <div class="hero-cta-lockup">
+                    <div class="hero-cta-tagline">
+                        <span class="cta-dot"></span>
+                        <span>Expanding Legal Grounds • Saving Lives Across Nigeria</span>
+                    </div>
+
+                    <div class="hero-btns">
+                        <div class="magnetic-wrap">
+                            <a href="#events-news" class="btn-hero-primary" data-cursor="NEWS">
+                                <span>Watch Media Coverage</span>
+                                <span>📺</span>
+                            </a>
+                        </div>
+                        <div class="magnetic-wrap">
+                            <a href="#events" class="btn-hero-secondary" data-cursor="READ">
+                                <span>Read Event Story</span>
+                                <span>→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-evidence">
+                    <span style="color:var(--brand-400);font-weight:800;">✓ MEDICAL CLARITY</span>
+                    <span style="opacity:0.4;">•</span>
+                    <span>Clear Legal Protection For Healthcare Workers & Mothers</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Slide 3: Image 3 (_HUR4632) - High-Level Panel Discussion & WARDC Partners --}}
+    <div class="hero-slide" :class="{ 'is-active': currentSlide === 3 }">
+        <picture>
+            <source srcset="{{ asset('themes/nigeria/events/_HUR4632.webp') }}" type="image/webp">
+            <img src="{{ asset('themes/nigeria/events/_HUR4632.jpg') }}" alt="High-Level Panel at Unfinished Event" class="hero-slide-media" loading="eager">
+        </picture>
+        <div class="hero-overlay"></div>
+        <div class="hero-grain"></div>
+
+        <div class="hero-content">
+            <div class="hero-inner hero-inner-content">
+                <div class="hero-badge">
+                    <span class="hero-badge-pulse"></span>
+                    <span>NATIONAL ALLIANCE • WARDC & PARTNERS</span>
+                </div>
+
+                <h2 class="hero-title">
+                    Finish The Law.<br>
+                    <span class="highlight">Protect Her Future.</span>
+                </h2>
+
+                <p class="hero-sub">
+                    Joined by WARDC, doctors, artists, and national partners—Pamoja, RAES, DATcitizen, and Orro Wox Group—demanding a law that is clear, responsive, and capable of protecting every Nigerian woman.
+                </p>
+
+                <div class="hero-cta-lockup">
+                    <div class="hero-cta-tagline">
+                        <span class="cta-dot"></span>
+                        <span>Finish the law. Protect her future.</span>
+                    </div>
+
+                    <div class="hero-btns">
+                        <div class="magnetic-wrap">
+                            <a href="#petition" class="btn-hero-primary" data-cursor="SIGN">
+                                <span>Sign The Petition</span>
+                                <span>✍️</span>
+                            </a>
+                        </div>
+                        <div class="magnetic-wrap">
+                            <a href="#events-gallery" class="btn-hero-secondary" data-cursor="GALLERY">
+                                <span>View Live Gallery</span>
+                                <span>🖼️</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-evidence">
+                    <span style="color:var(--brand-400);font-weight:800;">✓ UNITED FOR REFORM</span>
+                    <span style="opacity:0.4;">•</span>
+                    <span>WARDC • Doctors • Artists • Civil Society Coalition</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Slider Arrows (Prev & Next) --}}
+    <button type="button" @click="prevSlide()" class="hero-arrow hero-arrow-prev" aria-label="Previous Slide">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
+    </button>
+    <button type="button" @click="nextSlide()" class="hero-arrow hero-arrow-next" aria-label="Next Slide">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+
+    {{-- Slider Navigation Tabs with animated progress --}}
+    <div class="hero-slider-nav">
+        <div class="hero-slider-indicators">
+            <template x-for="(slide, idx) in slides" :key="idx">
+                <button type="button" @click="goToSlide(idx)" :class="{ 'is-active': currentSlide === idx }" class="hero-indicator-btn" :aria-label="'Go to slide ' + (idx + 1)">
+                    <div class="indicator-meta">
+                        <span class="indicator-num" x-text="'0' + (idx + 1)"></span>
+                        <span class="indicator-title" x-text="slide.tab"></span>
+                    </div>
+                    <div class="indicator-bar-track">
+                        <div class="indicator-bar-fill" :style="currentSlide === idx ? 'width: ' + progress + '%' : (currentSlide > idx ? 'width: 100%' : 'width: 0%')"></div>
+                    </div>
+                </button>
+            </template>
         </div>
     </div>
 
@@ -979,6 +1790,304 @@
 
                 <div class="narrative-img-wrap parallax-img">
                     <img src="{{ asset('themes/nigeria/social_gallery/unfinished-preventing-maternal-mortality-1.jpg') }}" alt="She Had A Life">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ EVENTS SECTION: TEN PORTRAITS. ONE UNFINISHED LAW. ═══ -->
+<section id="events" class="section-padding events-section" style="background:#ffffff;" x-data="eventGallery()">
+    <div class="section-container">
+        {{-- Section Header --}}
+        <div style="text-align:center;margin-bottom:60px;">
+            <div class="section-label" style="justify-content:center;">
+                <span class="section-line"></span>Official Campaign Launch • Transcorp Hilton Abuja<span class="section-line"></span>
+            </div>
+            <h2 class="section-title reveal-text" style="text-align:center;">Ten Portraits Stood Unfinished.</h2>
+            <p class="section-subtitle fade-up" style="margin:0 auto;text-align:center;max-width:820px;">
+                At Transcorp Hilton, Abuja, ten artists portrayed ten Nigerian women before legislators, policymakers, doctors, legal luminaries, and development partners. The unfinished portraits reflected an unfinished reality: a law that has begun, but has not yet been completed.
+            </p>
+        </div>
+
+        {{-- Event Key Meta Bar --}}
+        <div class="event-meta-bar card-reveal">
+            <div class="event-meta-item">
+                <div class="event-meta-icon">📍</div>
+                <div>
+                    <span class="event-meta-label">Location</span>
+                    <strong class="event-meta-value">Transcorp Hilton, Abuja</strong>
+                </div>
+            </div>
+            <div class="event-meta-item">
+                <div class="event-meta-icon">🗓️</div>
+                <div>
+                    <span class="event-meta-label">Date Convened</span>
+                    <strong class="event-meta-value">Monday, 28 September 2026</strong>
+                </div>
+            </div>
+            <div class="event-meta-item">
+                <div class="event-meta-icon">🎨</div>
+                <div>
+                    <span class="event-meta-label">The Installation</span>
+                    <strong class="event-meta-value">10 Artists • 10 Incomplete Canvases</strong>
+                </div>
+            </div>
+            <div class="event-meta-item">
+                <div class="event-meta-icon">⚖️</div>
+                <div>
+                    <span class="event-meta-label">Core Mission</span>
+                    <strong class="event-meta-value">Finish The Law. Protect Her Future.</strong>
+                </div>
+            </div>
+        </div>
+
+        {{-- Narrative & Art Split Layout --}}
+        <div class="event-narrative-grid">
+            <div class="event-story-col card-reveal">
+                <div class="event-tag-pill">The Symbolic Art Exhibition</div>
+                <h3 class="event-story-title">A Living Metaphor of an Incomplete Law</h3>
+                <p class="event-story-p">
+                    At Transcorp Hilton, Abuja, ten artists portrayed ten Nigerian women before legislators, policymakers, doctors, legal luminaries, and development partners. Each portrait was deliberately left incomplete; some parts fully painted in rich color, while others remained as stark pencil sketches.
+                </p>
+                <div class="event-quote-box">
+                    <p class="event-quote-text">
+                        "The unfinished portraits reflected an unfinished reality: a law that has begun, but has not yet been completed."
+                    </p>
+                </div>
+                <p class="event-story-p">
+                    Every maternal death that can be prevented represents a life that deserves protection. Nigeria has doctors trained and ready to save women in need, yet many are left navigating uncertainty when the provisions of the law do not clearly reflect the realities they face. The courts have moved. The law must move with them.
+                </p>
+                <div class="event-actions-row">
+                    <a href="#petition" class="btn-event-primary">Stand With Us • Sign Petition →</a>
+                    <a href="#events-gallery" class="btn-event-secondary">View Event Gallery 🖼️</a>
+                </div>
+            </div>
+
+            <div class="event-visual-col card-reveal">
+                <div class="event-featured-card">
+                    <div class="event-featured-media">
+                        <picture>
+                            <source srcset="{{ asset('themes/nigeria/events/_HUR4606.webp') }}" type="image/webp">
+                            <img src="{{ asset('themes/nigeria/events/_HUR4606.jpg') }}" alt="Attendees and artist observing the unfinished portrait of a female lawyer" loading="lazy">
+                        </picture>
+                        <div class="event-featured-badge">Symbolic Artwork No. 4</div>
+                    </div>
+                    <div class="event-featured-caption">
+                        <h4 class="event-caption-title">The Incomplete Canvas of Justice</h4>
+                        <p class="event-caption-desc">
+                            Attendees, lawmakers, and legal luminaries observe an artist's canvas: half oil painting, half pencil sketch. A living metaphor of Nigerian maternal health law left halfway.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- Policy & Demands Banner (Clarifying Not Decriminalisation) --}}
+        <div class="event-policy-banner card-reveal">
+            <div class="policy-banner-header">
+                <span class="policy-badge">LEGAL EXPANSION • EVIDENCE-BASED REFORM</span>
+                <h3 class="policy-headline">Clear, Responsive Protection Grounded in Lived Realities</h3>
+            </div>
+            <p class="policy-lead">
+                This campaign calls for an expansion of the existing legal grounds in line with lived realities. <strong>It does not call for decriminalisation.</strong> It calls for a law that is clear, responsive, and capable of protecting the women it is meant to serve.
+            </p>
+            <div class="policy-pillars-grid">
+                <div class="policy-pillar-item">
+                    <div class="policy-pillar-num">01</div>
+                    <div>
+                        <h4 class="policy-pillar-title">Ending Medical Uncertainty</h4>
+                        <p class="policy-pillar-text">Nigeria has doctors trained and ready to save women in need, yet many are left navigating uncertainty when statutory provisions fail to clearly reflect clinical emergencies.</p>
+                    </div>
+                </div>
+                <div class="policy-pillar-item">
+                    <div class="policy-pillar-num">02</div>
+                    <div>
+                        <h4 class="policy-pillar-title">Harmonizing With The Courts</h4>
+                        <p class="policy-pillar-text">The courts have moved to recognize women’s constitutional rights to health and life. Statutory law must move with them to protect healthcare workers and patients.</p>
+                    </div>
+                </div>
+                <div class="policy-pillar-item">
+                    <div class="policy-pillar-num">03</div>
+                    <div>
+                        <h4 class="policy-pillar-title">Protecting Nigerian Families</h4>
+                        <p class="policy-pillar-text">Every maternal death that can be prevented represents a life that deserves protection. We must finish the framework to protect her future.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- Media & News Coverage Section --}}
+        <div id="events-news" class="event-news-block">
+            <div style="text-align:center;margin-bottom:48px;">
+                <div class="section-label" style="justify-content:center;">
+                    <span class="section-line"></span>Broadcast & National Press<span class="section-line"></span>
+                </div>
+                <h3 class="section-title" style="text-align:center;font-size:clamp(2rem,3.5vw,3rem);">
+                    Unfinished Campaign in the News
+                </h3>
+                <p class="section-subtitle" style="margin:0 auto;text-align:center;">
+                    National television broadcasts and leading Nigerian newspapers report on the historic gathering of lawmakers, the NHRC, doctors, and civil society at Transcorp Hilton Abuja.
+                </p>
+            </div>
+
+            <div class="event-news-grid">
+                {{-- Channels TV Card with Video Embed --}}
+                <div class="news-card news-card-video card-reveal">
+                    <div class="news-video-frame">
+                        <iframe src="https://www.youtube-nocookie.com/embed/TKIt6IJ4XmQ"
+                                title="Channels Television: NHRC Calls For Review To Protect Women’s Lives"
+                                loading="lazy"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
+                    </div>
+                    <div class="news-card-body">
+                        <div class="news-source-meta">
+                            <span class="news-outlet-badge news-outlet-channels">CHANNELS TELEVISION</span>
+                            <span class="news-date">Special Broadcast Report</span>
+                        </div>
+                        <h4 class="news-title">NHRC Calls For Review To Protect Women’s Lives</h4>
+                        <p class="news-excerpt">
+                            Channels Television reports from Transcorp Hilton, Abuja, where the National Human Rights Commission (NHRC), healthcare practitioners, and women's advocates demanded an urgent review of abortion and maternal healthcare laws.
+                        </p>
+                        <a href="https://youtu.be/TKIt6IJ4XmQ?si=J9eJkekEgNXYykDj" target="_blank" rel="noopener noreferrer" class="news-link-btn">
+                            <span>Watch on YouTube</span>
+                            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                {{-- The Guardian Nigeria Card --}}
+                <div class="news-card news-card-press card-reveal">
+                    <div class="news-press-header" style="background: linear-gradient(135deg, #1e293b, #0f172a);">
+                        <div class="news-press-icon">📰</div>
+                        <span class="news-outlet-badge news-outlet-guardian">THE GUARDIAN</span>
+                    </div>
+                    <div class="news-card-body">
+                        <div class="news-source-meta">
+                            <span class="news-press-category">Metro & Health</span>
+                            <span class="news-date">September 2026</span>
+                        </div>
+                        <h4 class="news-title">Stakeholders Seek Legal Protection for Survivors of Rape and Incest</h4>
+                        <p class="news-excerpt">
+                            Stakeholders at the Abuja symposium advocated for expanded statutory exceptions to ensure victims of sexual violence receive legal, compassionate healthcare without persecution or delay.
+                        </p>
+                        <a href="https://guardian.ng/news/nigeria/metro/stakeholders-seek-legal-protection-for-survivors-of-rape-and-incest/" target="_blank" rel="noopener noreferrer" class="news-link-btn">
+                            <span>Read Full Article on Guardian.ng</span>
+                            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                {{-- Daily Trust Card --}}
+                <div class="news-card news-card-press card-reveal">
+                    <div class="news-press-header" style="background: linear-gradient(135deg, #831843, #500724);">
+                        <div class="news-press-icon">🗞️</div>
+                        <span class="news-outlet-badge news-outlet-dailytrust">DAILY TRUST</span>
+                    </div>
+                    <div class="news-card-body">
+                        <div class="news-source-meta">
+                            <span class="news-press-category">National News</span>
+                            <span class="news-date">September 2026</span>
+                        </div>
+                        <h4 class="news-title">NHRC, Women Group Call for Abortion Law Amendment</h4>
+                        <p class="news-excerpt">
+                            The National Human Rights Commission, alongside leading women’s organizations, urged federal lawmakers to address preventable maternal mortality by amending outdated legislation.
+                        </p>
+                        <a href="https://dailytrust.com/nhrc-women-group-call-for-abortion-law-amendment/" target="_blank" rel="noopener noreferrer" class="news-link-btn">
+                            <span>Read Full Article on DailyTrust.com</span>
+                            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- Live Event Photo Gallery --}}
+        <div id="events-gallery" class="event-gallery-block">
+            <div style="text-align:center;margin-bottom:48px;">
+                <div class="section-label" style="justify-content:center;">
+                    <span class="section-line"></span>Exhibition Archive<span class="section-line"></span>
+                </div>
+                <h3 class="section-title" style="text-align:center;font-size:clamp(2rem,3.5vw,3rem);">
+                    Live Event Photography
+                </h3>
+                <p class="section-subtitle" style="margin:0 auto;text-align:center;">
+                    Moments from Transcorp Hilton, Abuja: 10 unfinished portraits, master artists, policymakers, doctors, and development partners. Click any image to view in high definition.
+                </p>
+            </div>
+
+            <div class="event-gallery-grid">
+                @php
+                $liveEventPhotos = [
+                    ['img' => '_HUR4556', 'title' => 'Policymakers & Delegates', 'desc' => 'Dignitaries and policymakers seated before the live canvases at Transcorp Hilton.'],
+                    ['img' => '_HUR4606', 'title' => 'The Unfinished Legal Canvas', 'desc' => 'Attendees and artist examining the half-painted portrait of a legal luminary.'],
+                    ['img' => '_HUR4632', 'title' => 'High-Level Panel Discourse', 'desc' => 'Speakers address delegates beneath the UNFINISHED stage LED screen.'],
+                    ['img' => '_HUR4638', 'title' => 'Voices from the Frontlines', 'desc' => 'Panelists discuss the intersection of medicine, ethics, and legal ambiguity.'],
+                    ['img' => '_HUR4659', 'title' => 'Healthcare Practitioners Gathered', 'desc' => 'Medical doctors and advocates engaged in the summit discussions.'],
+                    ['img' => '_HUR4668', 'title' => 'Strategic Consultations', 'desc' => 'Delegates consulting on policy pathways to expand legal protections.'],
+                    ['img' => '_HUR4690', 'title' => 'Live Portrait Painting', 'desc' => 'Artists deliberately painting women’s portraits halfway on canvas.'],
+                    ['img' => '_HUR4704', 'title' => 'Clinical Reality & Legal Gaps', 'desc' => 'Doctors articulating the daily clinical realities faced in Nigerian hospitals.'],
+                    ['img' => '_HUR4715', 'title' => 'Dialogue Around the Art', 'desc' => 'Summit participants reflecting on the symbolism of unfinished lives and laws.'],
+                    ['img' => '_HUR4722', 'title' => 'The Transition: Paint to Pencil', 'desc' => 'Macro detail of the canvas highlighting the stark, deliberate unfinished edge.'],
+                ];
+                @endphp
+
+                @foreach($liveEventPhotos as $idx => $photo)
+                <div class="event-photo-card card-reveal" @click="openEventModal({{ $idx }})" data-cursor="VIEW">
+                    <div class="event-photo-thumb">
+                        <picture>
+                            <source srcset="{{ asset('themes/nigeria/events/' . $photo['img'] . '_thumb.webp') }}" type="image/webp">
+                            <img src="{{ asset('themes/nigeria/events/' . $photo['img'] . '_thumb.jpg') }}" alt="{{ $photo['title'] }}" loading="lazy">
+                        </picture>
+                        <div class="event-photo-glare"></div>
+                        <div class="event-photo-overlay">
+                            <span class="event-photo-expand">🔍 View Full Image</span>
+                        </div>
+                    </div>
+                    <div class="event-photo-caption">
+                        <span class="event-photo-idx">Photo {{ sprintf('%02d', $idx + 1) }}</span>
+                        <h5 class="event-photo-heading">{{ $photo['title'] }}</h5>
+                        <p class="event-photo-text">{{ $photo['desc'] }}</p>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+
+
+    </div>
+
+    {{-- Event Photo Lightbox Modal --}}
+    <div class="lightbox" x-show="isEventOpen" x-transition @keydown.escape.window="closeEventModal()" style="display:none;">
+        <div class="lightbox-bg" @click="closeEventModal()"></div>
+        <div class="lightbox-card" @click.stop x-show="currentEventPhoto !== null">
+            <button class="lightbox-close" @click="closeEventModal()" aria-label="Close">&#10005;</button>
+            <div class="lightbox-media">
+                <img :src="currentEventPhoto?.fullImage" :alt="currentEventPhoto?.title" class="lightbox-img">
+            </div>
+            <div class="lightbox-info">
+                <div>
+                    <span class="lightbox-tag">Transcorp Hilton, Abuja • 28 Sept 2026</span>
+                    <h3 class="lightbox-title" x-text="currentEventPhoto?.title"></h3>
+                    <p class="lightbox-body-text" x-text="currentEventPhoto?.desc"></p>
+                    <div class="lightbox-cta-box">
+                        <div class="lightbox-cta-text">"Finish the law. Protect her future."</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="lightbox-share-title">Share Event Moment</div>
+                    <div class="lightbox-actions">
+                        <button type="button" @click="shareEventWhatsApp()" class="lb-btn lb-btn-wa">
+                            <span>💬 WhatsApp</span>
+                        </button>
+                        <a :href="getEventXUrl()" target="_blank" rel="noopener noreferrer" class="lb-btn lb-btn-x">
+                            <span>𝕏 Share</span>
+                        </a>
+                        <a :href="currentEventPhoto?.fullImage" :download="'Unfinished-Event-' + currentEventPhoto?.img + '.jpg'" class="lb-btn lb-btn-dl">
+                            <span>⬇ Download</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1316,6 +2425,7 @@
             <div>
                 <p class="footer-col-title">Navigation</p>
                 <a href="#about" class="footer-link">About Campaign</a>
+                <a href="#events" class="footer-link">Live Abuja Event</a>
                 <a href="#pillars" class="footer-link">The 4 Pillars</a>
                 <a href="#stats" class="footer-link">Research Data</a>
                 <a href="#gallery" class="footer-link">Campaign Visuals</a>
@@ -1732,6 +2842,190 @@ if (window.innerWidth > 768) {
 })();
 
 }); // end DOMContentLoaded
+
+/* ═══════════════════════════════════════════
+   ALPINE — HERO SLIDER COMPONENT
+   ═══════════════════════════════════════════ */
+window.heroSlider = function() {
+    return {
+        currentSlide: 0,
+        totalSlides: 4,
+        progress: 0,
+        isPaused: false,
+        intervalId: null,
+        touchStartX: 0,
+        touchEndX: 0,
+        slides: [
+            { id: 0, tab: 'Overview' },
+            { id: 1, tab: 'Abuja Launch' },
+            { id: 2, tab: 'Legal Reality' },
+            { id: 3, tab: 'National Alliance' }
+        ],
+        init() {
+            this.startAutoplay();
+        },
+        startAutoplay() {
+            this.stopAutoplay();
+            const stepDuration = 60;
+            const totalSlideTime = 7000;
+            const stepIncrement = (stepDuration / totalSlideTime) * 100;
+            this.progress = 0;
+
+            this.intervalId = setInterval(() => {
+                if (!this.isPaused) {
+                    this.progress += stepIncrement;
+                    if (this.progress >= 100) {
+                        this.nextSlide();
+                    }
+                }
+            }, stepDuration);
+        },
+        stopAutoplay() {
+            if (this.intervalId) {
+                clearInterval(this.intervalId);
+                this.intervalId = null;
+            }
+        },
+        goToSlide(idx) {
+            this.currentSlide = (idx + this.totalSlides) % this.totalSlides;
+            this.progress = 0;
+            const video = document.getElementById('hero-video');
+            if (video) {
+                if (this.currentSlide === 0) {
+                    video.play().catch(() => {});
+                } else {
+                    video.pause();
+                }
+            }
+        },
+        nextSlide() {
+            this.goToSlide(this.currentSlide + 1);
+        },
+        prevSlide() {
+            this.goToSlide(this.currentSlide - 1);
+        },
+        pause() {
+            this.isPaused = true;
+        },
+        resume() {
+            this.isPaused = false;
+        },
+        handleTouchStart(e) {
+            if (e.changedTouches && e.changedTouches.length > 0) {
+                this.touchStartX = e.changedTouches[0].screenX;
+            }
+        },
+        handleTouchEnd(e) {
+            if (e.changedTouches && e.changedTouches.length > 0) {
+                this.touchEndX = e.changedTouches[0].screenX;
+                const diff = this.touchStartX - this.touchEndX;
+                if (Math.abs(diff) > 40) {
+                    if (diff > 0) {
+                        this.nextSlide();
+                    } else {
+                        this.prevSlide();
+                    }
+                }
+            }
+        }
+    };
+};
+
+/* ═══════════════════════════════════════════
+   ALPINE — EVENT GALLERY DATA & LIGHTBOX
+   ═══════════════════════════════════════════ */
+window.eventGallery = function() {
+    return {
+        isEventOpen: false,
+        currentEventIndex: 0,
+        photos: [
+            {
+                img: '_HUR4556',
+                title: 'Policymakers & Delegates',
+                desc: 'Dignitaries, lawmakers, and civil society delegates seated before the live canvases at Transcorp Hilton Abuja.',
+                fullImage: "{{ asset('themes/nigeria/events/_HUR4556.jpg') }}"
+            },
+            {
+                img: '_HUR4606',
+                title: 'The Unfinished Legal Canvas',
+                desc: 'Attendees and artist observing the half-painted, half-sketch portrait of a female legal luminary.',
+                fullImage: "{{ asset('themes/nigeria/events/_HUR4606.jpg') }}"
+            },
+            {
+                img: '_HUR4632',
+                title: 'High-Level Panel Discourse',
+                desc: 'Speakers address delegates beneath the UNFINISHED stage LED screen at Transcorp Hilton Abuja.',
+                fullImage: "{{ asset('themes/nigeria/events/_HUR4632.jpg') }}"
+            },
+            {
+                img: '_HUR4638',
+                title: 'Voices from the Frontlines',
+                desc: 'Panelists discuss the intersection of medical emergencies, ethics, and legal ambiguity.',
+                fullImage: "{{ asset('themes/nigeria/events/_HUR4638.jpg') }}"
+            },
+            {
+                img: '_HUR4659',
+                title: 'Healthcare Practitioners Gathered',
+                desc: 'Medical doctors and advocates engaged in the summit discussions to protect maternal health.',
+                fullImage: "{{ asset('themes/nigeria/events/_HUR4659.jpg') }}"
+            },
+            {
+                img: '_HUR4668',
+                title: 'Strategic Consultations',
+                desc: 'Delegates consulting on policy pathways to expand legal protections for Nigerian women.',
+                fullImage: "{{ asset('themes/nigeria/events/_HUR4668.jpg') }}"
+            },
+            {
+                img: '_HUR4690',
+                title: 'Live Portrait Painting',
+                desc: 'Artists demonstrating live the deliberate creation of unfinished women portraits.',
+                fullImage: "{{ asset('themes/nigeria/events/_HUR4690.jpg') }}"
+            },
+            {
+                img: '_HUR4704',
+                title: 'Clinical Reality & Legal Gaps',
+                desc: 'Doctors articulating the daily clinical emergencies faced in Nigerian hospitals.',
+                fullImage: "{{ asset('themes/nigeria/events/_HUR4704.jpg') }}"
+            },
+            {
+                img: '_HUR4715',
+                title: 'Dialogue Around the Art',
+                desc: 'Summit participants reflecting on the symbolism of unfinished lives and laws.',
+                fullImage: "{{ asset('themes/nigeria/events/_HUR4715.jpg') }}"
+            },
+            {
+                img: '_HUR4722',
+                title: 'The Transition: Paint to Pencil',
+                desc: 'Macro detail of the canvas highlighting the stark, deliberate boundary between paint and sketch.',
+                fullImage: "{{ asset('themes/nigeria/events/_HUR4722.jpg') }}"
+            }
+        ],
+        get currentEventPhoto() {
+            return this.photos[this.currentEventIndex] || this.photos[0];
+        },
+        openEventModal(index) {
+            this.currentEventIndex = index;
+            this.isEventOpen = true;
+            document.body.style.overflow = 'hidden';
+            if (window.lenis) window.lenis.stop();
+        },
+        closeEventModal() {
+            this.isEventOpen = false;
+            document.body.style.overflow = '';
+            if (window.lenis) window.lenis.start();
+        },
+        shareEventWhatsApp() {
+            const p = this.currentEventPhoto;
+            const text = `*UNFINISHED — Transcorp Hilton Abuja Event*\n"${p.title}"\n${p.desc}\n\nFinish the law. Protect her future: ${window.location.origin}/#events`;
+            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
+        },
+        getEventXUrl() {
+            const p = this.currentEventPhoto;
+            const text = `UNFINISHED Campaign Live Event in Abuja: "${p.title}" — Finish the law. Protect her future:`;
+            return `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(window.location.origin + '/#events')}`;
+        }
+    };
+};
 
 /* ═══════════════════════════════════════════
    ALPINE — CAMPAIGN GALLERY DATA & SHARING
