@@ -59,19 +59,18 @@ class StoryController extends Controller
             'title' => ['required', 'string', 'max:255'],
             'excerpt' => ['nullable', 'string', 'max:300'],
             'body' => ['required', 'string', 'min:50'],
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'max:255'],
+            'image' => ['nullable', 'image', 'max:5120'],
         ]);
 
-        // Associate with logged-in user if available
-        $userId = Auth::id();
+        $imagePath = $request->file('image')?->store('stories', 'public');
 
         Story::create([
             'title' => $validated['title'],
             'excerpt' => $validated['excerpt'] ?? null,
             'body' => $validated['body'],
+            'image' => $imagePath,
             'status' => Story::STATUS_PENDING,
-            'user_id' => $userId,
+            'user_id' => Auth::id(),
         ]);
 
         return redirect()->route('stories.index')

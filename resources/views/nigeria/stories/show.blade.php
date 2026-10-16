@@ -1,125 +1,51 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $story->title }} — UNFINISHED Campaign Nigeria</title>
-    <meta name="description" content="{{ $story->excerpt }}">
+@extends('layouts.nigeria')
 
-    {{-- Open Graph / Social Sharing --}}
-    <meta property="og:title" content="{{ $story->title }}">
-    <meta property="og:description" content="{{ $story->excerpt }}">
-    <meta property="og:url" content="{{ $shareLinks['url'] }}">
-    <meta property="og:type" content="article">
-    @if($story->image)
-    <meta property="og:image" content="{{ Storage::url($story->image) }}">
-    @endif
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ $story->title }}">
-    <meta name="twitter:description" content="{{ $story->excerpt }}">
+@section('title', $story->title . ' — UNFINISHED Campaign Nigeria')
+@section('meta_description', $story->excerpt)
 
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+@push('styles')
+<style>
+    .story-page { padding: 78px 0 108px; }
+    .story-frame { width: min(100% - 48px, 860px); margin: 0 auto; }
+    .back-link { display: inline-flex; margin-bottom: 34px; color: var(--brand-600); font-size: .8rem; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; }
+    .back-link:hover { color: var(--brand-500); }
+    .story-category { display: inline-flex; margin-bottom: 18px; padding: 6px 12px; border: 1px solid var(--brand-200); border-radius: 50px; background: var(--brand-50); color: var(--brand-700); font-size: .7rem; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; }
+    .story-title { margin-bottom: 22px; color: var(--charcoal); font-family: var(--font-headline); font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 400; line-height: .96; letter-spacing: .02em; text-transform: uppercase; }
+    .story-meta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 34px; color: var(--text-muted); font-size: .86rem; }
+    .story-cover { width: 100%; max-height: 500px; margin-bottom: 42px; border-radius: var(--radius-md); object-fit: cover; box-shadow: var(--shadow-md); }
+    .story-body { color: var(--text-body); font-size: 1.08rem; line-height: 1.9; }
+    .story-body p { margin-bottom: 24px; }
+    .share-card { margin-top: 52px; padding: 34px; border: 1px solid rgba(247,16,137,.14); border-radius: var(--radius-md); background: #fff; box-shadow: var(--shadow-sm); text-align: center; }
+    .share-card h2 { margin-bottom: 10px; font-family: var(--font-headline); font-size: 1.75rem; font-weight: 400; letter-spacing: .02em; text-transform: uppercase; }
+    .share-card p { max-width: 600px; margin: 0 auto 22px; color: var(--text-muted); }
+    .share-btn { display: inline-flex; margin: 5px; padding: 12px 20px; border-radius: 50px; color: #fff; font-size: .78rem; font-weight: 800; letter-spacing: .8px; text-transform: uppercase; }
+    @media (max-width: 640px) { .story-page { padding: 58px 0 78px; } .story-frame { width: min(100% - 40px, 860px); } .share-card { padding: 28px 18px; } }
+</style>
+@endpush
 
-    <style>
-        @font-face {
-            font-family: 'MarkPro';
-            src: url("{{ asset('themes/nigeria/fonts/MarkPro-Black.otf') }}") format('opentype');
-            font-weight: 900;
-            font-style: normal;
-        }
-        :root {
-            --orange-500: #f71089; --orange-400: #ff2a9d; --orange-600: #db0c77;
-            --dark-bg: #120a16; --dark-surface: #1a0f20; --dark-card: #23142c;
-            --cream: #fbfbfa; --warm-white: #f6f6f2; --charcoal: #140e0e; --text-muted: #64748b;
-            --font-headline: 'Anton', 'MarkPro', sans-serif;
-            --font-body: 'Plus Jakarta Sans', sans-serif;
-            --radius-md: 18px;
-        }
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: var(--font-body); background: var(--cream); color: var(--charcoal); -webkit-font-smoothing: antialiased; line-height: 1.7; }
-        a { text-decoration: none; color: inherit; }
-
-        .site-header {
-            position: sticky; top: 0; z-index: 1000;
-            background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(247, 16, 137, 0.12); padding: 0 28px;
-        }
-        .header-inner { max-width: 1320px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 74px; }
-        .logo-brand { display: flex; align-items: center; gap: 8px; font-family: var(--font-headline); font-size: 1.8rem; color: white; text-transform: uppercase; }
-        .logo-dot { width: 8px; height: 8px; background: var(--orange-400); border-radius: 50%; }
-        .back-link { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #1e293b; transition: color 0.2s; }
-        .back-link:hover { color: var(--orange-400); }
-
-        .story-wrapper { max-width: 820px; margin: 0 auto; padding: 60px 24px 80px; }
-        .story-category { display: inline-block; background: #fff0f7; color: var(--orange-600); border: 1px solid #fbcfe8; font-size: 0.75rem; font-weight: 800; padding: 6px 14px; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
-        .story-title { font-family: var(--font-headline); font-size: clamp(2.2rem, 4.5vw, 3.4rem); line-height: 1.15; text-transform: uppercase; margin-bottom: 20px; color: var(--charcoal); }
-        .story-meta { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 32px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
-        .story-cover { width: 100%; height: 440px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: 40px; }
-        .story-body { font-size: 1.12rem; line-height: 1.85; color: #334155; }
-        .story-body p { margin-bottom: 24px; }
-
-        .share-card { background: white; border-radius: var(--radius-md); border: 1px solid rgba(0,0,0,0.06); padding: 32px; margin-top: 48px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); text-align: center; }
-        .share-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 50px; color: white; font-weight: 700; font-size: .85rem; text-transform: uppercase; margin: 6px; }
-
-        footer.site-footer { padding: 60px 28px; background: #100814; border-top: 1px solid rgba(247, 16, 137, 0.15); color: white; text-align: center; font-size: .88rem; }
-    </style>
-</head>
-<body>
-
-<header class="site-header">
-    <div class="header-inner">
-        <a href="/" class="logo-brand">
-            <img src="{{ asset('themes/nigeria/img/logos/logo-nav-horizontal.webp') }}" alt="UNFINISHED" style="height:42px;width:auto;display:block;">
-        </a>
+@section('content')
+<article class="story-page">
+    <div class="story-frame">
         <a href="{{ route('stories.index') }}" class="back-link">← All Community Stories</a>
-    </div>
-</header>
+        @if($story->featured)<span class="story-category">Featured Story</span>@endif
+        <h1 class="story-title">{{ $story->title }}</h1>
+        <div class="story-meta"><span>Community story</span><span>•</span><span>{{ optional($story->published_at ?? $story->created_at)->format('F d, Y') }}</span></div>
 
-<main class="story-wrapper">
-    @if($story->category)
-        <span class="story-category">{{ $story->category }}</span>
-    @endif
-
-    <h1 class="story-title">{{ $story->title }}</h1>
-
-    <div class="story-meta">
-        <span>Shared by <strong>{{ $story->author_name ?? 'Anonymous Supporter' }}</strong></span>
-        <span>•</span>
-        <span>{{ $story->created_at->format('F d, Y') }}</span>
-        @if($story->author_location)
-        <span>•</span>
-        <span>📍 {{ $story->author_location }}</span>
+        @if($story->image)
+            <img src="{{ \Illuminate\Support\Facades\Storage::url($story->image) }}" alt="{{ $story->title }}" class="story-cover">
         @endif
+
+        <div class="story-body">{!! nl2br(e($story->body)) !!}</div>
+
+        <section class="share-card">
+            <h2>Help Amplify This Story</h2>
+            <p>Share this story to build public support for completing Nigeria's maternal healthcare laws.</p>
+            <div>
+                <a href="{{ $shareLinks['whatsapp'] }}" target="_blank" rel="noopener noreferrer" class="share-btn" style="background:#25d366">Share on WhatsApp</a>
+                <a href="{{ $shareLinks['twitter'] }}" target="_blank" rel="noopener noreferrer" class="share-btn" style="background:#000">Share on X</a>
+                <a href="{{ $shareLinks['facebook'] }}" target="_blank" rel="noopener noreferrer" class="share-btn" style="background:#1877f2">Share on Facebook</a>
+            </div>
+        </section>
     </div>
-
-    @if($story->image)
-        <img src="{{ Storage::url($story->image) }}" alt="{{ $story->title }}" class="story-cover">
-    @endif
-
-    <div class="story-body">
-        {!! nl2br(e($story->content)) !!}
-    </div>
-
-    <div class="share-card">
-        <h3 style="font-family:var(--font-headline);font-size:1.4rem;text-transform:uppercase;margin-bottom:10px;">Help Amplify This Story</h3>
-        <p style="color:var(--text-muted);margin-bottom:20px;font-size:.95rem;">Share this story to build public support for completing Nigeria's maternal healthcare laws.</p>
-        <div>
-            <a href="{{ $shareLinks['whatsapp'] }}" target="_blank" class="share-btn" style="background:#25d366;">Share on WhatsApp</a>
-            <a href="{{ $shareLinks['twitter'] }}" target="_blank" class="share-btn" style="background:#000;">Share on X</a>
-            <a href="{{ $shareLinks['facebook'] }}" target="_blank" class="share-btn" style="background:#1877f2;">Share on Facebook</a>
-        </div>
-    </div>
-</main>
-
-<footer class="site-footer">
-    <img src="{{ asset('themes/nigeria/img/logos/logo-footer-square.webp') }}" alt="UNFINISHED" style="height:64px;width:auto;margin:0 auto 18px;display:block;">
-    <p style="font-family:var(--font-headline);font-size:1.1rem;color:#ff60be;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;">Unfinished Dreams • Unfinished Futures</p>
-    <p style="color:rgba(255,255,255,0.7);margin-bottom:14px;">Reform the law. Protect our future. Sign the petition.</p>
-    <p style="color:rgba(255,255,255,0.4);font-size:.82rem;">© {{ date('Y') }} UNFINISHED — Preventing Maternal Mortality. All rights reserved.</p>
-</footer>
-
-</body>
-</html>
+</article>
+@endsection
